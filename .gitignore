@@ -7,3 +7,9 @@ lake-manifest.json
 /.elan/
 /.lean-dist/
 /.cache/
+/LaTeX/*.aux
+/LaTeX/*.fdb_latexmk
+/LaTeX/*.fls
+/LaTeX/*.log
+/LaTeX/*.out
+/LaTeX/*.toc

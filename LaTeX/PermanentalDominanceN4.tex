@@ -1,0 +1,1056 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,longtable,array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\CC}{\mathbb C}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\Sn}{\mathfrak S}
+\newcommand{\per}{\operatorname{per}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\Rea}{\operatorname{Re}}
+\newcommand{\Ima}{\operatorname{Im}}
+\newcommand{\adj}{\operatorname{adj}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\ip}[2]{\left\langle #1,#2\right\rangle}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\newcommand{\abs}[1]{\left\lvert #1\right\rvert}
+\newcommand{\mat}[1]{\begin{pmatrix}#1\end{pmatrix}}
+\newcommand{\psd}{\succeq 0}
+\newcommand{\pd}{\succ 0}
+\newcommand{\eps}{\varepsilon}
+
+\title{Permanental Dominance in Dimension Four\\
+  \large A Direct Geometric Proof}
+\author{Siwei Zeng}
+\date{August 2026}
+\hypersetup{
+  pdftitle={Permanental Dominance in Dimension Four: A Direct Geometric Proof},
+  pdfauthor={Siwei Zeng},
+  pdfsubject={The complete normalized permanental-dominance theorem in dimension four}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a subgroup $H\leq \Sn_4$ and an irreducible complex character $\chi$ of
+$H$, let
+\[
+  d_\chi^H(A)=\sum_{\sigma\in H}\chi(\sigma)
+  \prod_{i=1}^4 A_{i,\sigma(i)}
+\]
+be the associated generalized matrix function.  We prove that every
+Hermitian positive-semidefinite matrix $A\in M_4(\CC)$ satisfies
+\[
+  \frac{1}{\chi(1)}d_\chi^H(A)\leq \per A.
+\]
+Both sides are real.  The proof first reduces to correlation matrices and
+then treats the thirty-seven irreducible-character rows belonging to the
+eleven conjugacy types of subgroups of $\Sn_4$.  All but two rows follow from
+elementary principal-minor, moment, and block-contraction inequalities.  The
+two remaining rows are the non-real one-dimensional characters of $A_4$.
+For them the difference from the permanent becomes an affine Hermitian
+quadratic form.  A residual-vector normalization turns this form into a
+polynomial on the cone of $3\times3$ Gram matrices.  We prove its
+nonnegativity by a rank-one sum of squares, a positive-definite
+two-dimensional Hessian, and exact rational Gram certificates.  The argument
+also yields a positive-semidefinite adjugate certificate for the exceptional
+$A_4$ rows.
+\end{abstract}
+
+\tableofcontents
+
+\section{Statement of the theorem}
+
+Let $n\geq1$, let $H\leq\Sn_n$, and let $\chi:H\to\CC$ be a character.
+For $A=(A_{ij})\in M_n(\CC)$ put
+\begin{equation}\label{eq:def-dchi}
+ d_\chi^H(A):=\sum_{\sigma\in H}\chi(\sigma)
+   \prod_{i=1}^n A_{i,\sigma(i)},
+ \qquad
+ \per A:=\sum_{\sigma\in\Sn_n}\prod_{i=1}^n A_{i,\sigma(i)}.
+\end{equation}
+The normalization in the permanental-dominance conjecture is
+$d_\chi^H/\chi(1)$.  Notice that no complex conjugate is placed on
+$\chi(\sigma)$ in~\eqref{eq:def-dchi}; this convention agrees with all
+formulae below.
+
+\begin{lemma}[Reality]\label{lem:reality}
+If $A=A^*$ and $\chi$ is the character of a finite-dimensional complex
+representation of $H$, then $d_\chi^H(A)$ and $\per A$ are real.
+\end{lemma}
+
+\begin{proof}
+Every finite-group representation may be made unitary, and hence
+$\overline{\chi(\sigma)}=\chi(\sigma^{-1})$.  Hermitian symmetry gives
+\[
+ \overline{\prod_i A_{i,\sigma(i)}}
+ =\prod_i A_{\sigma(i),i}
+ =\prod_j A_{j,\sigma^{-1}(j)}.
+\]
+Conjugating the sum and replacing $\sigma$ by $\sigma^{-1}$ proves the first
+claim.  The second is the special case $H=\Sn_n$, $\chi=1$.
+\end{proof}
+
+\begin{theorem}[Permanental dominance for $n=4$]\label{thm:main}
+Let $H\leq\Sn_4$, let $V$ be an irreducible finite-dimensional complex
+representation of $H$, and let $\chi$ be its character.  For every
+$A\in M_4(\CC)$ with $A\psd$,
+\begin{equation}\label{eq:main}
+  \frac{d_\chi^H(A)}{\dim V}\leq \per A.
+\end{equation}
+\end{theorem}
+
+The scope of Theorem~\ref{thm:main} is exactly dimension four.  It includes
+every subgroup of $\Sn_4$ and every irreducible complex representation of
+that subgroup, but it does not assert the conjecture in arbitrary dimension.
+
+\section{Reduction to correlation matrices}
+
+The normalization step is elementary but important because it removes all
+diagonal parameters without an invertibility hypothesis.
+
+\begin{lemma}[Diagonal congruence]\label{lem:scaling}
+Let $s_1,\dots,s_n\in\RR$ and $D=\diag(s_1,\dots,s_n)$.  Then
+\[
+ d_\chi^H(DAD)=\left(\prod_i s_i\right)^2d_\chi^H(A),
+ \qquad
+ \per(DAD)=\left(\prod_i s_i\right)^2\per A.
+\]
+\end{lemma}
+
+\begin{proof}
+For every permutation $\sigma$,
+\[
+ \prod_i(DAD)_{i,\sigma(i)}
+ =\prod_i(s_iA_{i,\sigma(i)}s_{\sigma(i)})
+ =\left(\prod_i s_i\right)^2\prod_iA_{i,\sigma(i)}.
+\]
+Summation proves both identities.
+\end{proof}
+
+\begin{lemma}[Correlation reduction]\label{lem:correlation-reduction}
+It is enough to prove Theorem~\ref{thm:main} for positive-semidefinite
+matrices whose diagonal entries are all one.
+\end{lemma}
+
+\begin{proof}
+Suppose first that $A_{ii}>0$ for all $i$ and put
+$s_i=\sqrt{A_{ii}}$.  Since a Hermitian matrix has real diagonal, the matrix
+\[
+ C=\diag(s_i^{-1})A\diag(s_i^{-1})
+\]
+is positive semidefinite and has diagonal one.  Moreover
+$A=\diag(s_i)C\diag(s_i)$, so Lemma~\ref{lem:scaling} transfers the desired
+inequality from $C$ to $A$.
+
+If $A_{ii}=0$ for some $i$, positivity of the $2\times2$ principal minors
+implies $A_{ij}=A_{ji}=0$ for every $j$.  Each permutation monomial then
+contains a zero entry in row $i$, so both sides of~\eqref{eq:main} vanish.
+\end{proof}
+
+We therefore write a general $4\times4$ correlation matrix as
+\begin{equation}\label{eq:corr-six}
+ A(a,b,c,d,e,f)=
+ \mat{
+ 1&a&b&c\\
+ \bar a&1&d&e\\
+ \bar b&\bar d&1&f\\
+ \bar c&\bar e&\bar f&1
+ }\psd.
+\end{equation}
+
+\section{The finite group-theoretic reduction}
+
+\subsection{Subgroups and characters}
+
+Up to conjugacy, the subgroups of $\Sn_4$ have the following eleven types.
+Here $r=(1234)$ and $s=(13)$ in the dihedral row.
+\begin{center}
+\begin{tabular}{@{}lllrr@{}}
+\toprule
+type & representative & abstract group & order & irreducible rows\\
+\midrule
+$1$ & $\{1\}$ & $1$ & 1&1\\
+$C_2^{\rm t}$ & $\langle(12)\rangle$ & $C_2$ &2&2\\
+$C_2^{\rm d}$ & $\langle(12)(34)\rangle$ & $C_2$ &2&2\\
+$C_3$ & $\langle(123)\rangle$ & $C_3$ &3&3\\
+$C_4$ & $\langle(1234)\rangle$ & $C_4$ &4&4\\
+$V_4^{\rm n}$ & $\{1,(12)(34),(13)(24),(14)(23)\}$ & $C_2^2$ &4&4\\
+$V_4^{\rm d}$ & $\langle(12),(34)\rangle$ & $C_2^2$ &4&4\\
+$S_3$ & $\operatorname{Stab}(4)$ & $S_3$ &6&3\\
+$D_8$ & $\langle r,s\rangle$ & $D_8$ &8&5\\
+$A_4$ & $A_4$ & $A_4$ &12&4\\
+$S_4$ & $S_4$ & $S_4$ &24&5\\
+\bottomrule
+\end{tabular}
+\end{center}
+The row counts sum to $37$.
+
+\begin{lemma}[Subgroup classification]\label{lem:subgroup-classification}
+Every subgroup of $\Sn_4$ is conjugate to exactly one of the eleven types in
+the preceding table.
+\end{lemma}
+
+\begin{proof}
+We recall the elementary classification.  An intransitive subgroup preserves
+an orbit partition of $4$.  The partitions $1+1+1+1$, $2+1+1$, $2+2$ and
+$3+1$ give respectively $1$, the two possible embedded copies of $C_2$,
+$V_4^{\rm d}$ and subgroups of the displayed $S_3$.  This yields
+$1,C_2^{\rm t},C_2^{\rm d},C_3,V_4^{\rm d},S_3$.
+
+Now suppose the action is transitive.  Orbit--stabilizer shows that the order
+is divisible by $4$ and divides $24$.  A Sylow analysis gives the following
+possibilities.  A cyclic Sylow $2$-subgroup generated by a four-cycle gives
+$C_4$; a non-cyclic subgroup of order $4$ is the normal double-transposition
+group $V_4^{\rm n}$; a subgroup of order $8$ is a Sylow $2$-subgroup and is
+conjugate to $\langle(1234),(13)\rangle$; order $12$ gives the unique
+index-two subgroup $A_4$; and order $24$ gives $S_4$.  These groups have
+different order, orbit structure, or involution type, so the listed types are
+not conjugate to one another.
+\end{proof}
+
+For later reference, the non-cyclic character tables are recorded below.
+The class order for $S_4$ is
+$1,(12),(12)(34),(123),(1234)$:
+\begin{equation}\label{eq:s4-table}
+\begin{array}{c|rrrrr}
+ &1&(12)&(12)(34)&(123)&(1234)\\\hline
+{[4]}    &1& 1& 1& 1& 1\\
+{[1^4]}  &1&-1& 1& 1&-1\\
+{[31]}   &3& 1&-1& 0&-1\\
+{[211]}  &3&-1&-1& 0& 1\\
+{[22]}   &2& 0& 2&-1& 0
+\end{array}
+\end{equation}
+For $A_4$, with $C_+$ and $C_-$ the two classes of three-cycles and
+\[
+ \omega=-\frac12-\frac{\sqrt3}{2}i,
+ \qquad \omega^2+\omega+1=0,
+\]
+the table is
+\begin{equation}\label{eq:a4-table}
+\begin{array}{c|rrrr}
+ &1&(12)(34)&C_+&C_-\\\hline
+1&1&1&1&1\\
+\chi_\omega&1&1&\omega&\omega^2\\
+\bar\chi_\omega&1&1&\omega^2&\omega\\
+\chi_3&3&-1&0&0.
+\end{array}
+\end{equation}
+For $D_8=\langle r,s:r^4=s^2=1,srs=r^{-1}\rangle$, the four linear
+characters take independent signs on $r$ and $s$, while its two-dimensional
+character is $2,-2,0,0,0$ on
+$1,r^2,\{r,r^3\},\{s,r^2s\},\{rs,r^3s\}$.  The familiar tables of $C_m$,
+$C_2^2$, and $S_3$ complete all thirty-seven rows.  Orthogonality of the
+displayed rows and the identity $\sum_\chi\chi(1)^2=|H|$ prove that no
+irreducible character is missing.
+
+\subsection{Conjugation invariance}
+
+\begin{lemma}[Transport]\label{lem:transport}
+Let $g\in\Sn_4$, $K=g^{-1}Hg$, and let
+$\chi^g(g^{-1}\sigma g)=\chi(\sigma)$.  If
+$A^g_{ij}=A_{g(i),g(j)}$, then
+\[
+ d_{\chi^g}^{K}(A^g)=d_\chi^H(A),\qquad \per A^g=\per A,
+ \qquad A\psd\Longrightarrow A^g\psd.
+\]
+\end{lemma}
+
+\begin{proof}
+Simultaneous permutation of rows and columns preserves positivity and the
+permanent.  For a permutation monomial, changing $i$ to $g(i)$ gives
+\[
+ \prod_i A^g_{i,(g^{-1}\sigma g)(i)}
+ =\prod_j A_{j,\sigma(j)}.
+\]
+Summing proves the assertion.
+\end{proof}
+
+Thus it suffices to prove dominance for the thirty-seven rows of the eleven
+fixed representatives.
+
+\section{Correlation coordinates and the routine rows}
+
+\subsection{Four cycle aggregates}
+
+For~\eqref{eq:corr-six} define
+\begin{align}
+ \mathsf T={}&|a|^2+|b|^2+|c|^2+|d|^2+|e|^2+|f|^2,\label{eq:T}\\
+ \mathsf D={}&|a|^2|f|^2+|b|^2|e|^2+|c|^2|d|^2,\label{eq:D}\\
+ \mathsf C={}&2\Rea(a d\bar b+a e\bar c+b f\bar c+d f\bar e),\label{eq:C}\\
+ \mathsf F={}&2\Rea(a d f\bar c+a e\bar f\bar b+b\bar d e\bar c).
+ \label{eq:F}
+\end{align}
+Enumerating the cycle types of $\Sn_4$ gives
+\begin{equation}\label{eq:per-aggregate}
+ \per A=1+\mathsf T+\mathsf D+\mathsf C+\mathsf F.
+\end{equation}
+The five normalized $S_4$ rows in the order~\eqref{eq:s4-table} are
+\begin{align}
+ p_{[4]}&=1+\mathsf T+\mathsf D+\mathsf C+\mathsf F,\nonumber\\
+ p_{[1^4]}&=1-\mathsf T+\mathsf D+\mathsf C-\mathsf F,\nonumber\\
+ p_{[31]}&=1+\tfrac13\mathsf T-\tfrac13\mathsf D-\tfrac13\mathsf F,\label{eq:s4-rows}\\
+ p_{[211]}&=1-\tfrac13\mathsf T-\tfrac13\mathsf D+\tfrac13\mathsf F,\nonumber\\
+ p_{[22]}&=1+\mathsf D-\tfrac12\mathsf C.\nonumber
+\end{align}
+
+\begin{lemma}[Scalar correlation inequalities]\label{lem:scalar-toolbox}
+If $A$ in~\eqref{eq:corr-six} is positive semidefinite, then
+\begin{gather}
+ 0\leq\mathsf T,\quad 0\leq\mathsf D,\quad
+ \mathsf D\leq\frac{\mathsf T^2}{4},\quad
+ -2\mathsf D\leq\mathsf F\leq2\mathsf D\leq\mathsf T,
+ \label{eq:scalar-basic}\\
+ \frac{\mathsf T^2}{2}\leq\mathsf T+\frac32\mathsf C,
+ \qquad 1\leq\per A.\label{eq:moment-bound}
+\end{gather}
+Every $3\times3$ principal permanent is at most $\per A$.
+\end{lemma}
+
+\begin{proof}
+The inequalities $|a|^2,\ldots,|f|^2\leq1$ follow from the $2\times2$
+principal minors.  The first four estimates in~\eqref{eq:scalar-basic} are
+then AM--GM and
+$2|\Rea(xy)|\leq|x|^2+|y|^2$, paired over opposite edges.
+
+For the moment inequality, let $\lambda_1,\dots,\lambda_4\geq0$ be the
+eigenvalues of $A$.  Direct trace expansion gives
+\[
+ \sum\lambda_i=4,\quad
+ \sum\lambda_i^2=4+2\mathsf T,\quad
+ \sum\lambda_i^3=4+6\mathsf T+3\mathsf C.
+\]
+The exact identity
+\[
+ \left(\sum_i\lambda_i\right)\left(\sum_i\lambda_i^3\right)
+ -\left(\sum_i\lambda_i^2\right)^2
+ =\sum_{i<j}\lambda_i\lambda_j(\lambda_i-\lambda_j)^2
+\]
+implies~\eqref{eq:moment-bound}'s first inequality.  Combining it with
+$\mathsf D\leq\mathsf T^2/4$ and $\mathsf F\geq-2\mathsf D$ gives
+$1\leq1+\mathsf T+\mathsf D+\mathsf C+\mathsf F$.
+
+Finally, the permanent version of the $3+1$ Fischer contraction can be
+verified directly from~\eqref{eq:per-aggregate}: after subtracting a
+principal $3\times3$ permanent, the remaining expression is the sum of the
+corresponding $3\times3$ determinant inequality and squared edge terms.
+Applying this to each of the four principal triples proves the last claim.
+\end{proof}
+
+We also need two symmetric $2+2$ contractions.  Put
+\begin{align}
+ R_+&:=1+|b|^2+|e|^2+\mathsf D
+       +2\Rea(a d f\bar c),\label{eq:Rplus}\\
+ R_\wedge&:=(1-|b|^2)(1-|e|^2)+|af-c\bar d|^2.\label{eq:Rwedge}
+\end{align}
+
+\begin{lemma}[Block contractions]\label{lem:block-contractions}
+For a positive-semidefinite correlation matrix,
+\begin{equation}\label{eq:block-bounds}
+ R_+\leq\per A,\qquad R_\wedge\leq\per A,\qquad
+ 1+|a|^2|f|^2+|c|^2|d|^2\leq\per A.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For the split $\{1,3\}\mid\{2,4\}$, take Gram vectors
+$x_1,x_2,x_3,x_4$ for $A$.  Orthogonally remove the component of $x_3$
+along $x_1$ and apply Cauchy--Schwarz to the resulting two pairs.  Expansion
+gives the first inequality.  Applying exterior Cauchy--Schwarz to
+$x_1\wedge x_3$ and $x_2\wedge x_4$ gives
+\[
+ |af-c\bar d|^2\leq(1-|b|^2)(1-|e|^2),
+\]
+and the same block expansion gives the second inequality.  Relabelling the
+split twice yields
+$(1+|a|^2)(1+|f|^2)\leq\per A$ and
+$(1+|c|^2)(1+|d|^2)\leq\per A$; comparison of the two opposite-edge
+products gives the third inequality.
+\end{proof}
+
+\subsection{Explicit dispatch of the routine character rows}
+
+The following proposition records the finite analytic part of the proof.
+Its table is included to make clear that the only rows not covered are the
+two non-real $A_4$ rows.
+
+\begin{proposition}[Thirty-five routine rows]\label{prop:routine-rows}
+For every representative subgroup in Lemma~\ref{lem:subgroup-classification},
+all normalized irreducible rows other than $\chi_\omega$ and
+$\bar\chi_\omega$ of $A_4$ are bounded above by $\per A$.
+\end{proposition}
+
+\begin{proof}
+The cyclic, Klein-four, and $S_3$ expansions are as follows.  In the $C_3$
+and $S_3$ rows put $z=ad\bar b$.
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+group & normalized row values\\
+\midrule
+$1$ & $1$\\
+$C_2^{\rm t}$ & $1\pm|a|^2$\\
+$C_2^{\rm d}$ & $1\pm|a|^2|f|^2$\\
+$C_3$ & $1+2\Rea z$,\quad $1-\Rea z\pm\sqrt3\Ima z$\\
+$V_4^{\rm n}$ & $1\pm r\pm s\pm t$ with the four character sign patterns,\\
+& $r=|a|^2|f|^2$, $s=|b|^2|e|^2$, $t=|c|^2|d|^2$\\
+$V_4^{\rm d}$ & $(1\pm|a|^2)(1\pm|f|^2)$\\
+$S_3$ & $1+|a|^2+|b|^2+|d|^2+2\Rea z$,\\
+& $1-|a|^2-|b|^2-|d|^2+2\Rea z$,\quad $1-\Rea z$\\
+\bottomrule
+\end{tabular}
+\end{center}
+These expressions follow by listing the elements of the corresponding
+subgroup.  The $3\times3$ principal determinant inequalities, the principal
+permanent contraction in Lemma~\ref{lem:scalar-toolbox}, and
+$|a|^2,\ldots,|f|^2\leq1$ prove their bounds.  For example, the three $C_3$
+rows are precisely the normalized one-dimensional rows of the principal
+$3\times3$ correlation block, while the three $S_3$ rows are its trivial,
+sign, and standard rows.
+
+For $C_4$, put
+\[
+ r=|b|^2|e|^2,\qquad z=adf\bar c.
+\]
+Its four rows are
+\begin{equation}\label{eq:c4-rows}
+ 1+r+2\Rea z,\quad 1-r-2\Ima z,\quad
+ 1+r-2\Rea z,\quad 1-r+2\Ima z.
+\end{equation}
+The estimates
+\[
+ 2|\Rea z|,\ 2|\Ima z|
+ \leq |a|^2|f|^2+|c|^2|d|^2
+\]
+together with Lemma~\ref{lem:block-contractions} prove all four bounds.
+
+For $D_8$, write $p=|b|^2$, $q=|e|^2$.  The five rows are
+\begin{align}
+ R_+,&\quad
+ (1+p)(1+q)-|af+c\bar d|^2,\nonumber\\
+ &(1-p)(1-q)-|af-c\bar d|^2,\quad
+ R_\wedge,\quad 1-pq.\label{eq:d8-rows}
+\end{align}
+The first and fourth are~\eqref{eq:block-bounds}; the second is no larger
+than $R_+$ by direct expansion; the third and fifth are at most $1$, hence at
+most $\per A$ by Lemma~\ref{lem:scalar-toolbox}.
+
+For $S_4$, substitute~\eqref{eq:scalar-basic}--\eqref{eq:moment-bound} into
+the five expressions~\eqref{eq:s4-rows}.  The sign row uses
+$\mathsf T+\mathsf F\geq0$; the $[31]$ and $[22]$ rows use the moment
+inequality; and the $[211]$ row is at most $1$ because
+$\mathsf F\leq\mathsf T$ and $\mathsf D\geq0$.
+
+Finally, the trivial $A_4$ row is the average of the trivial and sign $S_4$
+rows, while its three-dimensional row is the average of the $[31]$ and
+$[211]$ rows.  This proves the asserted thirty-five rows.
+\end{proof}
+
+\section{The exceptional non-real \texorpdfstring{$A_4$}{A4} gap}
+
+Let
+\begin{equation}\label{eq:Buvw}
+ B(u,v,w)=\mat{1&u&v\\\bar u&1&w\\\bar v&\bar w&1}.
+\end{equation}
+Define
+\begin{equation}\label{eq:c0}
+ c_0(u,v,w)=|u|^2+|v|^2+|w|^2
+ +2\Rea\bigl((1-\omega)uw\bar v\bigr)
+\end{equation}
+and the Hermitian matrix
+\begin{equation}\label{eq:K}
+ K(u,v,w)=
+ \mat{
+ 1&(1-\omega^2)u+v\bar w&uw+(1-\omega)v\\
+ (1-\omega)\bar u+w\bar v&1&(1-\omega^2)w+v\bar u\\
+ \bar u\bar w+(1-\omega^2)\bar v&(1-\omega)\bar w+u\bar v&1
+ }.
+\end{equation}
+
+\begin{lemma}[Character expansion]\label{lem:a4-expansion}
+For the correlation matrix~\eqref{eq:corr-six},
+\begin{equation}\label{eq:a4-gap}
+ \per A-d_{\chi_\omega}^{A_4}(A)
+ =c_0(a,b,d)+\mat{\bar c&\bar e&\bar f}
+ K(a,b,d)\mat{c\\e\\f}.
+\end{equation}
+For $\bar\chi_\omega$, the same formula holds after an odd simultaneous
+relabeling of the four indices.
+\end{lemma}
+
+\begin{proof}
+List the identity, three double transpositions, and the two classes of four
+three-cycles in $A_4$, insert their values from~\eqref{eq:a4-table}, and pair
+inverse permutations.  Using $\omega^2=-1-\omega$ gives exactly
+\eqref{eq:c0}--\eqref{eq:K}.  An odd permutation interchanges the two
+three-cycle classes and therefore exchanges $\chi_\omega$ with its conjugate.
+\end{proof}
+
+The remaining task is consequently the following four-vector inequality.
+
+\begin{theorem}[Four-vector inequality]\label{thm:four-vector}
+Suppose
+\begin{equation}\label{eq:completion}
+ \mathcal A=\mat{B(u,v,w)&q\\q^*&1}\psd,\qquad q\in\CC^3.
+\end{equation}
+Then
+\begin{equation}\label{eq:four-vector}
+ c_0(u,v,w)+q^*K(u,v,w)q\geq0.
+\end{equation}
+\end{theorem}
+
+The proof occupies Sections~\ref{sec:normalization}--\ref{sec:Ppositive}.
+Before giving it, we record the matrix certificate that motivated the
+geometric formulation.
+
+\begin{lemma}[Ellipsoid-to-adjugate certificate]\label{lem:ellipsoid}
+Let $B,K\in M_m(\CC)$ with $B\psd$ and $K=K^*$, and let $c\in\RR$.  If
+\[
+ \mat{B&q\\q^*&1}\psd\quad\Longrightarrow\quad c+q^*Kq\geq0
+\]
+for every $q\in\CC^m$, then
+\begin{equation}\label{eq:adj-certificate}
+ (\det B)K+c\,\adj(B)\psd.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+If $\det B=0$, the choice $q=0$ gives $c\geq0$ and
+$\adj(B)\psd$, so~\eqref{eq:adj-certificate} follows.  If $\det B>0$, then
+$B\pd$ and the block condition is $q^*B^{-1}q\leq1$.  Given $y\neq0$, set
+\[
+ q=\frac{y}{\sqrt{y^*B^{-1}y}}.
+\]
+The hypothesis, multiplied by $y^*B^{-1}y$, says
+$y^*(K+cB^{-1})y\geq0$.  Hence $K+cB^{-1}\psd$.  Multiplication by
+$\det B>0$ and the identity $\adj(B)=(\det B)B^{-1}$ prove the claim.
+\end{proof}
+
+Applied to~\eqref{eq:c0}--\eqref{eq:K}, this gives the geometric spectral
+certificate
+\begin{equation}\label{eq:a4-certificate}
+ (\det B(u,v,w))K(u,v,w)+c_0(u,v,w)\adj(B(u,v,w))\psd.
+\end{equation}
+
+\section{Residual-vector normalization}\label{sec:normalization}
+
+Assume first that $q_1q_2q_3\neq0$.  The Schur complement of the final
+diagonal entry in~\eqref{eq:completion} is
+$B-qq^*\psd$.  Congruence by
+$\diag(\bar q_1^{-1},\bar q_2^{-1},\bar q_3^{-1})$ gives the residual Gram
+matrix
+\begin{equation}\label{eq:residual-gram}
+ R=\mat{
+ n_1&h_{12}&h_{13}\\
+ \bar h_{12}&n_2&h_{23}\\
+ \bar h_{13}&\bar h_{23}&n_3
+ }\psd,
+\end{equation}
+where
+\begin{equation}\label{eq:residual-coordinates}
+ n_i=\frac{1-|q_i|^2}{|q_i|^2},\qquad
+ h_{12}=\frac{u}{q_1\bar q_2}-1,\quad
+ h_{13}=\frac{v}{q_1\bar q_3}-1,\quad
+ h_{23}=\frac{w}{q_2\bar q_3}-1.
+\end{equation}
+Thus $R$ is the Gram matrix of three residual vectors $w_1,w_2,w_3$ with
+$n_i=\norm{w_i}^2$ and $h_{ij}=\ip{w_i}{w_j}$.
+
+We now define the normalized geometric polynomial.  Put
+\begin{align}
+ E={}&n_1n_2+|h_{12}|^2+n_1n_3+|h_{13}|^2+n_2n_3+|h_{23}|^2,\nonumber\\
+ x_{12,13}={}&n_1h_{23}+h_{13}\bar h_{12},\nonumber\\
+ x_{12,23}={}&h_{12}h_{23}+n_2h_{13},\nonumber\\
+ x_{13,23}={}&n_3h_{12}+h_{13}\bar h_{23},\nonumber\\
+ S={}&E+2\Rea(x_{12,13}+x_{12,23}+x_{13,23}),\label{eq:tensor-terms}\\
+ S_\omega={}&E+2\Rea(\omega^2x_{12,13}+\omega x_{12,23}
+                     +\omega^2x_{13,23}),\nonumber\\
+ \tau={}&h_{13}\bar h_{12}\bar h_{23},\nonumber\\
+ \Gamma={}&n_3|h_{12}|^2+n_2|h_{13}|^2+n_1|h_{23}|^2
+              +3\Rea\tau+\sqrt3\Ima\tau.\nonumber
+\end{align}
+Finally set
+\begin{equation}\label{eq:geometric-P}
+ \mathcal P(R)=24+6\left(n_1+n_2+n_3
+ +2\Rea(h_{12}+h_{13}+h_{23})\right)+2S-S_\omega+\Gamma.
+\end{equation}
+
+\begin{lemma}[Exact normalization identity]\label{lem:normalization-identity}
+With~\eqref{eq:residual-coordinates},
+\begin{equation}\label{eq:normalization-identity}
+ c_0(u,v,w)+q^*K(u,v,w)q
+ =|q_1q_2q_3|^2\mathcal P(R).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Equations~\eqref{eq:residual-coordinates} give
+\[
+ u=q_1\bar q_2(1+h_{12}),\quad
+ v=q_1\bar q_3(1+h_{13}),\quad
+ w=q_2\bar q_3(1+h_{23}),
+\]
+and $|q_i|^2(1+n_i)=1$.  Substitute these identities in
+\eqref{eq:c0} and~\eqref{eq:K}, use
+$\omega^2+\omega+1=0$, and collect the coefficients of the three
+normalization equations.  The diagonal quadratic terms give $E$, the three
+mixed symmetric-tensor terms give $S$ and $S_\omega$, and the cubic terms
+give $\Gamma$.  The result is~\eqref{eq:normalization-identity}.
+\end{proof}
+
+Thus Theorem~\ref{thm:four-vector} follows from the next result.
+
+\begin{theorem}[Geometric polynomial]\label{thm:Ppositive}
+For every Hermitian matrix $R$ of the form~\eqref{eq:residual-gram},
+\[
+ R\psd\quad\Longrightarrow\quad\mathcal P(R)\geq0.
+\]
+\end{theorem}
+
+\section{Positivity of the geometric polynomial}\label{sec:Ppositive}
+
+\subsection{The rank-one boundary}
+
+Suppose first that $R$ has rank one.  Write
+\[
+ n_1=|x|^2,\quad n_2=|y|^2,\quad n_3=|z|^2,\qquad
+ h_{12}=\bar xy,\quad h_{13}=\bar xz,\quad h_{23}=\bar yz.
+\]
+Define
+\begin{align}
+ R_0(x,y,z)={}&4+|x+y+z|^2+|xy+xz+yz|^2\nonumber\\
+ &\quad-(|xy|^2+|xz|^2+|yz|^2)+|xyz|^2,\label{eq:R0}\\
+ \Phi(x,y,z)={}&xy+\omega xz+\omega^2yz.
+\end{align}
+
+\begin{lemma}[Rank-one sum of squares]\label{lem:rank-one-sos}
+For all $x,y,z\in\CC$,
+\begin{equation}\label{eq:P-rank-one}
+ \mathcal P(R)=2\bigl(3R_0(x,y,z)+|\Phi(x,y,z)|^2\bigr)\geq0.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Regard $R_0$ as a quadratic in $z$.  Put
+\[
+ K_0=|1+\bar xy|^2,\quad
+ L_0=\overline{x+y}+\overline{xy}(x+y),\quad
+ C_0=4+|x+y|^2.
+\]
+Direct expansion gives
+\[
+ R_0=K_0|z|^2+2\Rea(L_0z)+C_0
+\]
+and the exact discriminant identity
+\[
+ C_0K_0-|L_0|^2=4(1+\Rea(\bar xy))^2\geq0.
+\]
+Completing the square proves $R_0\geq0$.  A second direct expansion using
+$1+\omega+\omega^2=0$ gives the equality in~\eqref{eq:P-rank-one}; its
+right-hand side is nonnegative.
+\end{proof}
+
+\subsection{The positive-definite region}
+
+It remains to treat a positive-definite residual Gram matrix.  Write
+\begin{equation}\label{eq:G-data}
+ a=n_1>0,\quad b=n_2,\quad c=n_3,\quad
+ h_{12}=g=r-is,\quad p=h_{13},\quad q=h_{23},
+\end{equation}
+and put
+\begin{equation}\label{eq:Gram-G-delta}
+ G=\mat{a&g\\\bar g&b},\qquad
+ \delta=\det G=ab-r^2-s^2>0,\qquad h=\mat{p\\q}.
+\end{equation}
+There is a unique $\zeta\in\CC^2$ such that $h=G\zeta$.  Positivity of
+$R$ tested on $(-\zeta,1)$ gives the Schur slack
+\begin{equation}\label{eq:schur-slack}
+ \zeta^*G\zeta\leq c.
+\end{equation}
+
+Set
+\begin{align}
+ \lambda={}&6+a+b+r^2+s^2+5r-\sqrt3s,\label{eq:lambda}\\
+ P_0={}&24+6(a+b+2r)+ab+r^2+s^2,\label{eq:P0}\\
+ \ell={}&\mat{
+ 6+(2-\omega)g+(2-\omega^2)b\\
+ 6+(2-\omega)a+(2-\omega^2)\bar g},\label{eq:ell}\\
+ M={}&\mat{
+ 1+b&2-\omega+(1-\omega)g\\
+ 2-\omega^2+(1-\omega^2)\bar g&1+a},\label{eq:M}\\
+ T={}&\lambda I_2+MG.\label{eq:Tmatrix}
+\end{align}
+
+\begin{lemma}[Quadratic decomposition]\label{lem:quadratic-decomposition}
+With the preceding notation,
+\begin{align}
+ \mathcal P(R)
+ ={}&P_0+2\Rea(\ell^*h)+\lambda c+\Rea(h^*Mh)\label{eq:P-quadratic}\\
+ ={}&Q(\zeta)+\lambda(c-\zeta^*G\zeta),\nonumber
+\end{align}
+where
+\begin{equation}\label{eq:Qzeta}
+ Q(\zeta)=P_0+2\Rea((G\ell)^*\zeta)+\zeta^*(GT)\zeta.
+\end{equation}
+Moreover $GT$ is Hermitian.
+\end{lemma}
+
+\begin{proof}
+Substitution of~\eqref{eq:G-data} in~\eqref{eq:geometric-P} gives the first
+identity.  Replacing $h$ by $G\zeta$, using $G=G^*$ and
+$T=\lambda I+MG$, gives the second.  Finally
+$GT=\lambda G+GMG$ is Hermitian because $G$ and $M$ are Hermitian.
+\end{proof}
+
+\begin{lemma}[Positivity of the scalar part]\label{lem:lambda-positive}
+Under $a,b\geq0$ and $r^2+s^2\leq ab$, one has $\lambda>0$.
+\end{lemma}
+
+\begin{proof}
+Let $\rho=\sqrt{r^2+s^2}$.  Cauchy--Schwarz and AM--GM give
+\[
+ 5r-\sqrt3s\geq-2\sqrt7\rho,\qquad a+b\geq2\rho.
+\]
+Consequently
+\[
+ \lambda\geq(\rho-(\sqrt7-1))^2+2(\sqrt7-1)>0.
+\]
+\end{proof}
+
+The remaining algebra is organized by the Gram defect $\delta$.  Define
+\begin{equation}\label{eq:Ndef}
+ N=\Rea\left(P_0\det T-\ell^*G\adj(T)\ell\right).
+\end{equation}
+
+\begin{lemma}[Hessian and minimum certificates]\label{lem:hessian-certs}
+For $a>0$ and $\delta\geq0$,
+\begin{equation}\label{eq:detT-expansion}
+ a^3\Rea\det T=D_0+\delta D_1+\delta^2D_2,
+\end{equation}
+where
+\begin{align}
+ D_0&=a^3\lambda_0H_0>0,\nonumber\\
+ D_1&=a\bigl((4+11a)(r^2+s^2)+a(20+a)r
+ -\sqrt3a(4+3a)s+a(18+10a+3a^2)\bigr)>0,\label{eq:Dcoeffs}\\
+ D_2&=a(a+1)(a+2)>0.
+\end{align}
+Here $\lambda_0$ denotes~\eqref{eq:lambda} with
+$b=(r^2+s^2)/a$, and
+\[
+ H_0=2\lambda_0-6+4(r^2+s^2)>0.
+\]
+Furthermore
+\begin{equation}\label{eq:N-expansion}
+ a^3N=N_0+\delta N_1+\delta^2N_2+\delta^3N_3,
+\end{equation}
+with $N_0\geq0$ and $N_1,N_2,N_3>0$.
+\end{lemma}
+
+\begin{proof}
+The determinant identity follows by expanding~\eqref{eq:Tmatrix} after
+$b=(r^2+s^2+\delta)/a$.  Positivity of $H_0$ follows from
+Lemma~\ref{lem:lambda-positive} and the sharper estimate obtained from the
+same two inequalities.  For $D_1$, complete squares in $(r,s)$; the residual
+is
+\[
+ 4a(72+126a+94a^2+26a^3)>0.
+\]
+The assertion for $D_2$ is immediate.
+
+The expansion~\eqref{eq:N-expansion} is obtained in the same way from
+\eqref{eq:Ndef}.  On the boundary $\delta=0$, the first two residual vectors
+are collinear.  Lemma~\ref{lem:rank-one-sos}, viewed as a quadratic in the
+third scalar coordinate, implies that its discriminant is nonpositive.  In
+the notation above this gives
+\[
+ N_0=a^3\lambda_0(P_0H_0-|L_0'|^2)\geq0
+\]
+for the corresponding line coefficient $L_0'$.
+
+The remaining coefficients are explicit.  First,
+\[
+ N_3=(a+2)(a^2+6)>0.
+\]
+Next
+\begin{align*}
+ N_2={}&36(r^2+s^2)
+ +a(120+84r-36\sqrt3s+36(r^2+s^2))\\
+ &+a^2(60+24r-24\sqrt3s+16(r^2+s^2))\\
+ &+a^3(16+2(r^2+s^2))+2a^4.
+\end{align*}
+Completing squares gives the strictly positive residual
+\[
+ 16a(a^6+16a^5+112a^4+318a^3+588a^2+936a+1080).
+\]
+
+For $N_1$, put $X=r$, $Y=\sqrt3s$ and
+$\nu=X^2+Y^2/3$.  Then
+\begin{equation}\label{eq:N1-B}
+ N_1=36\nu^2+aB_1+a^2B_2+a^3B_3+a^4B_4+6a^5,
+\end{equation}
+where
+\begin{align*}
+ B_1&=\nu(240+168X-72Y+54\nu),\\
+ B_2&=432+624X-240Y+492X^2+108Y^2-168XY\\
+    &\qquad +(156X-84Y)\nu+38\nu^2,\\
+ B_3&=168+72X-168Y+54X^2+46Y^2-84XY\\
+    &\qquad +(20X-24Y)\nu+6\nu^2,\\
+ B_4&=60+24X-24Y+14\nu.
+\end{align*}
+Appendix~\ref{app:sos} gives exact certificates for
+$B_1\geq0$, $B_2>0$, $B_4>0$, and
+$B_2+aB_3+a^2B_4>0$.  Hence~\eqref{eq:N1-B} is strictly positive.
+\end{proof}
+
+\begin{proposition}[Positive-definite residual Gram matrices]
+If $R\pd$, then $\mathcal P(R)>0$.
+\end{proposition}
+
+\begin{proof}
+Equations~\eqref{eq:detT-expansion} and~\eqref{eq:Dcoeffs} show
+$\Rea\det T>0$.  The leading entry of $GT$ equals a positive rank-one
+boundary value plus $\delta(a+1)$, hence it is positive.  Since $GT$ is
+Hermitian and
+\[
+ \det(GT)=\delta\det T>0,
+\]
+the $2\times2$ matrix $GT$ is positive definite.
+
+The critical point of~\eqref{eq:Qzeta} is
+\[
+ \zeta_0=-\frac{\adj(T)\ell}{\Rea\det T},
+\]
+and completing the Hermitian square gives
+\[
+ \min_\zeta Q(\zeta)=\frac{N}{\Rea\det T}.
+\]
+By~\eqref{eq:N-expansion}, $N>0$ when $\delta>0$.  Therefore
+$Q(\zeta)>0$ for all $\zeta$.  Lemma~\ref{lem:lambda-positive} and the Schur
+slack~\eqref{eq:schur-slack} now give
+\[
+ \mathcal P(R)=Q(\zeta)+\lambda(c-\zeta^*G\zeta)>0.
+\]
+\end{proof}
+
+\subsection{Closure of the Gram cone}
+
+\begin{proof}[Proof of Theorem~\ref{thm:Ppositive}]
+For $R\psd$ and $t>0$, the matrix $R+tI$ is positive definite, and hence
+$\mathcal P(R+tI)>0$ by the preceding proposition.  Since
+$\mathcal P$ is a polynomial in the real and imaginary parts of the entries,
+letting $t\downarrow0$ gives $\mathcal P(R)\geq0$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:four-vector}]
+If all coordinates of $q$ are nonzero, the residual matrix
+\eqref{eq:residual-gram} is positive semidefinite.  Theorem~\ref{thm:Ppositive}
+and~\eqref{eq:normalization-identity} give~\eqref{eq:four-vector}.
+
+For arbitrary $q$, choose phases $p_i$ of modulus one, taking
+$p_i=q_i/|q_i|$ when $q_i\neq0$ and $p_i=1$ otherwise.  Convexly interpolate
+the block matrix~\eqref{eq:completion} with the rank-one correlation
+completion generated by $(p_1,p_2,p_3,1)$.  Its new last column is
+$q_i(t)=(1-t)q_i+tp_i$, which is nonzero for $0<t<1$.  The interpolated
+matrix remains positive semidefinite, so the already proved case applies.
+Letting $t\downarrow0$ and using continuity proves the result.
+\end{proof}
+
+\section{Completion of the proof}
+
+\begin{proposition}[The two non-real $A_4$ rows]\label{prop:a4-rows}
+For every $4\times4$ positive-semidefinite correlation matrix $A$,
+\[
+ d_{\chi_\omega}^{A_4}(A)\leq\per A,\qquad
+ d_{\bar\chi_\omega}^{A_4}(A)\leq\per A.
+\]
+\end{proposition}
+
+\begin{proof}
+Write $A$ in the block form~\eqref{eq:completion} with
+$B=B(a,b,d)$ and $q=(c,e,f)^T$.  Lemma~\ref{lem:a4-expansion} and
+Theorem~\ref{thm:four-vector} give the first inequality.  An odd simultaneous
+relabeling preserves positivity and the permanent and interchanges the two
+non-real characters, giving the second.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+By Lemma~\ref{lem:correlation-reduction}, it is enough to consider
+correlation matrices.  Lemma~\ref{lem:subgroup-classification} and the
+transport Lemma~\ref{lem:transport} reduce an arbitrary subgroup and
+irreducible representation to one of the thirty-seven registered rows.
+Proposition~\ref{prop:routine-rows} proves thirty-five of them and
+Proposition~\ref{prop:a4-rows} proves the remaining two.  Lemma~\ref{lem:reality}
+shows that the compared quantities are real.  Finally,
+Lemma~\ref{lem:scaling} returns from correlation matrices to the full
+positive-semidefinite cone.
+\end{proof}
+
+\appendix
+
+\section{Exact scalar and Gram certificates}\label{app:sos}
+
+This appendix records the non-obvious polynomial certificates used in
+Lemma~\ref{lem:hessian-certs}.  They contain no numerical approximation.
+Recall $\nu=X^2+Y^2/3$.
+
+\subsection{Direct square completions}
+
+The coefficient $B_2$ has the exact decomposition
+\begin{align*}
+ B_2={}&38\left(\nu+\frac{39}{19}X-\frac{21}{19}Y+\frac32\right)^2
+ +\frac{448}{19}\left(Y+\frac3{32}X-\frac{1083}{448}\right)^2\\
+ &+\frac{3483}{16}\left(X+\frac{2137}{2322}\right)^2
+ +\frac{131797}{5418}>0.
+\end{align*}
+Likewise
+\begin{align*}
+ B_3+252={}&6\left(\nu+\frac53X-2Y-\frac12\right)^2
+ +24\left(Y-\frac{11}{12}X-\frac{15}{4}\right)^2\\
+ &+\frac{139}{6}\left(X-\frac{249}{139}\right)^2
+ +\frac{1851}{278}>0.
+\end{align*}
+Further elementary completions give
+\[
+ B_1\geq\frac{112}{3}\nu\geq0,\qquad
+ B_4\geq\frac{132}{7}>0.
+\]
+
+\subsection{The conditional middle-coefficient certificate}
+
+Set
+\[
+ \Sigma=4B_2B_4+252B_3.
+\]
+An exact Gram decomposition is
+\begin{equation}\label{eq:sigma-gram}
+ \Sigma=2128\nu\left(\nu+\frac{387}{133}X-
+ \frac{261}{133}Y+\frac{77}{20}\right)^2
+ +\frac1{59850}m^TQm,
+\end{equation}
+where $m=(1,Y,Y^2,X,XY,X^2)^T$ and
+\begingroup
+\scriptsize
+\[
+Q=\mat{
+8739057600&-4231634400&478800000&6265576800&-1795500000&47880000\\
+-4231634400&2519799114&-385003080&-2526627600&807975000&239400000\\
+478800000&-385003080&79782560&281630160&-81252000&-35910000\\
+6265576800&-2526627600&281630160&10931106942&-2359670040&2303554680\\
+-1795500000&807975000&-81252000&-2359670040&685371360&-243756000\\
+47880000&239400000&-35910000&2303554680&-243756000&1122611040
+}.
+\]
+\endgroup
+Exact rational $LDL^T$ elimination has positive pivots
+\begin{align*}
+&8739057600,\quad \frac{79557301866}{169},\quad
+\frac{1112696849800960}{299087601},\\
+&\frac{2624099206828303859949}{869294413907},\quad
+\frac{2531308970961028469920080}{115380521779374043},\\
+&\frac{1406694633431943161674826341030}
+{10547120712337618624667}.
+\end{align*}
+Thus $Q\pd$ and $m^TQm>0$ because the first coordinate of $m$ is one.
+Equation~\eqref{eq:sigma-gram} proves $\Sigma>0$.
+
+If $B_3\geq0$, then $B_2+aB_3+a^2B_4>0$ is immediate.  If $B_3<0$, the
+identity
+\[
+ 4B_2B_4-B_3^2=(4B_2B_4+252B_3)+(-B_3)(B_3+252)
+\]
+shows that the discriminant of the quadratic
+$B_2+aB_3+a^2B_4$ is negative.  Hence that quadratic is positive for every
+$a>0$.  This completes the proof that $N_1>0$.
+
+\section{Character-row audit}
+
+For convenience, the logical dispatch is summarized below.
+\begin{longtable}{@{}p{0.20\textwidth}p{0.25\textwidth}p{0.47\textwidth}@{}}
+\toprule
+subgroup types & rows & analytic certificate\\
+\midrule
+\endfirsthead
+\toprule
+subgroup types & rows & analytic certificate\\
+\midrule
+\endhead
+$1,C_2,C_3,V_4,S_3$ & 19 rows & principal $2\times2$ and $3\times3$
+minor inequalities and principal-permanent contraction\\
+$C_4$ & 4 rows & opposite-edge AM--GM plus the two block contractions\\
+$D_8$ & 5 rows & symmetric and exterior $2+2$ block contractions\\
+$S_4$ & 5 rows & eigenvalue moment identity, cycle bounds, and
+$\per A\geq1$\\
+$A_4$ & trivial and $3$-dimensional & averages of already proved $S_4$ rows\\
+$A_4$ & $\chi_\omega,\bar\chi_\omega$ & residual-vector geometric
+polynomial and Theorem~\ref{thm:four-vector}\\
+\bottomrule
+\end{longtable}
+
+The row count in the first entry is
+$1+2+2+3+4+4+3=19$; adding $4+5+5+4$ gives $37$.  The $A_4$ line contains
+four rows in total, two routine and two geometric.
+
+\section{Correspondence with the Lean formalization}
+
+The proof has been formalized in Lean 4.19.0 with Mathlib 4.19.0.  The main
+mathematical correspondences are:
+\begin{center}
+\begin{tabular}{@{}p{0.40\textwidth}p{0.52\textwidth}@{}}
+\toprule
+manuscript component & Lean modules\\
+\midrule
+definitions and normalization & \texttt{Basic}, \texttt{DiagonalScaling},
+\texttt{CorrelationLift}\\
+subgroups and character completeness & \texttt{SubgroupRegistry},
+\texttt{CharacterTables}, realization and completeness registries\\
+routine analytic rows & \texttt{LowOrderRegistry}, \texttt{C4TableBridge},
+\texttt{D8TableBridge}, \texttt{S4TableBridge}\\
+$A_4$ expansion and certificate & \texttt{A4Certificate}, \texttt{A4Gap},
+\texttt{A4GeometricBridge}\\
+residual normalization & \texttt{A4GeometricNormalization},
+\texttt{A4GeometricFourVector}\\
+rank-one boundary & \texttt{A4GeometricRankOne},
+\texttt{A4GeometricCollinear}\\
+Hessian and minimum & \texttt{A4GeometricHessian},
+\texttt{A4GeometricQuadratic}, \texttt{A4GeometricMinimum}\\
+exact polynomial certificates & \texttt{A4GeometricGeneral},
+\texttt{A4GeometricGram}, \texttt{A4GeometricAssembly}\\
+PSD closure and final theorem & \texttt{A4GeometricPSD},
+\texttt{FinalAssembly}, \texttt{NormalizedPermanentalDominance}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The public formal endpoints are
+\begin{verbatim}
+PermanentalDominance.N4.normalized_permanental_dominance_n4
+PermanentalDominance.N4.normalized_permanental_dominance_n4_real
+\end{verbatim}
+and the central geometric endpoints are
+\begin{verbatim}
+A4GeometricPSD.geometricP_nonneg_of_posSemidef
+A4GeometricFourVector.fourVectorProperty
+A4GeometricBridge.certificate_posSemidef_geometric
+\end{verbatim}
+
+\end{document}

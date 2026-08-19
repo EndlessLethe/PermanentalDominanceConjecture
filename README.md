@@ -4,14 +4,14 @@ This repository contains a Lean formalization of the normalized permanental-domi
 
 ## Status
 
-The formalized result proves that for every subgroup (H \le S_4), every irreducible finite-dimensional complex representation (V) of (H), and every positive-semidefinite complex (4 \times 4) matrix (A), the normalized generalized matrix function attached to (V) is bounded above by the permanent (on real parts; both quantities are also proved real).
+The formalized result proves that for every subgroup $H \le S_4$, every irreducible finite-dimensional complex representation $V$ of $H$, and every positive-semidefinite complex $4 \times 4$ matrix $A$, the normalized generalized matrix function attached to $V$ is bounded above by the permanent (on real parts; both quantities are also proved real).
 
 The main public theorems are:
 
 - `PermanentalDominance.N4.normalized_permanental_dominance_n4`
 - `PermanentalDominance.N4.normalized_permanental_dominance_n4_real`
 
-This is the complete (n=4) result. It is not a proof in arbitrary dimension.
+This is the complete $n=4$ result. It is not a proof in arbitrary dimension.
 
 ## Repository layout
 
@@ -24,11 +24,11 @@ A manuscript directory will be added when there is a standalone paper to build; 
 
 The formal proof has three main layers:
 
-1. classify the subgroup and irreducible-character rows that can occur inside (S_4);
+1. classify the subgroup and irreducible-character rows that can occur inside $S_4$;
 2. reduce the positive-semidefinite matrix problem to correlation data and discharge all routine rows;
-3. handle the remaining non-real (A_4) row by a direct residual-vector/Gram-geometric certificate, then assemble the registry into the final theorem.
+3. handle the remaining non-real $A_4$ row by a direct residual-vector/Gram-geometric certificate, then assemble the registry into the final theorem.
 
-The active (A_4) path is geometric. The older characteristic-polynomial/scalar-certificate alternative is intentionally not included.
+The active $A_4$ path is geometric. The older characteristic-polynomial/scalar-certificate alternative is intentionally not included.
 
 ## Verification
 
@@ -43,4 +43,4 @@ The project pins Lean and Mathlib through `Lean/lean-toolchain` and `Lean/lakefi
 
 ## Provenance
 
-The proof was extracted from [`EndlessLethe/math`](https://github.com/EndlessLethe/math) at merge commit [`c5e4d8c61f08d05ffe7c28bfa1ea732d8827b485`](https://github.com/EndlessLethe/math/commit/c5e4d8c61f08d05ffe7c28bfa1ea732d8827b485). Only the dependency closure of the final (n=4) geometric route is carried here.
+The proof was extracted from [`EndlessLethe/math`](https://github.com/EndlessLethe/math) at merge commit [`c5e4d8c61f08d05ffe7c28bfa1ea732d8827b485`](https://github.com/EndlessLethe/math/commit/c5e4d8c61f08d05ffe7c28bfa1ea732d8827b485). Only the dependency closure of the final $n=4$ geometric route is carried here.

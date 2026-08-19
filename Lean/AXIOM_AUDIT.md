@@ -2,7 +2,7 @@
 
 Run `./verify.sh` from the `Lean` directory. After compiling the library, the script elaborates `AxiomAudit.lean`, which:
 
-- checks the two public (n=4) theorems;
+- checks the two public $n=4$ theorems;
 - checks the central geometric-certificate endpoints;
 - prints the axioms used by each endpoint.
 

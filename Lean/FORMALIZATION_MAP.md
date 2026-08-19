@@ -27,15 +27,15 @@ normalized_permanental_dominance_n4
 
 `Basic`, `PSD`, `Completion`, `Gauge`, and `GramExtension` define generalized matrix functions, positive semidefiniteness, normalization/completion tools, phase gauges, and Gram extensions.
 
-## Layer 2: finite (n=4) classification
+## Layer 2: finite $n=4$ classification
 
-`SubgroupRegistry`, `CharacterTables`, the realization modules, and the completeness registries reduce every subgroup of (S_4) and every simple complex representation to a finite list of registered rows.
+`SubgroupRegistry`, `CharacterTables`, the realization modules, and the completeness registries reduce every subgroup of $S_4$ and every simple complex representation to a finite list of registered rows.
 
 ## Layer 3: rowwise dominance
 
 The table-bridge and registry modules prove the required inequality for the routine rows. `S4Cases` still imports `SpectralThreeCycle` for a concrete three-cycle computation; this shared lemma is part of the active dependency closure and is distinct from the omitted spectral-certificate route.
 
-## Layer 4: the exceptional non-real (A_4) rows
+## Layer 4: the exceptional non-real $A_4$ rows
 
 `A4Gap` expands the remaining character rows into a certificate problem. The active proof passes through:
 

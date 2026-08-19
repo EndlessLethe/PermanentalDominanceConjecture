@@ -40,4 +40,4 @@ See `FORMALIZATION_MAP.md` for the dependency-level proof outline.
 
 ## Scope and trust boundary
 
-The source set is the exact internal import closure of the final (n=4) theorem at the provenance commit recorded in the root README. It excludes unrelated NIEP developments and the superseded spectral/scalar-certificate route. A source scan of this closure finds no `sorry`, `admit`, custom `axiom`, or `unsafe` declarations. `AxiomAudit.lean` asks Lean to print the axioms of the public endpoints.
+The source set is the exact internal import closure of the final $n=4$ theorem at the provenance commit recorded in the root README. It excludes unrelated NIEP developments and the superseded spectral/scalar-certificate route. A source scan of this closure finds no `sorry`, `admit`, custom `axiom`, or `unsafe` declarations. `AxiomAudit.lean` asks Lean to print the axioms of the public endpoints.

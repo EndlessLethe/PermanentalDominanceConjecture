@@ -11,6 +11,12 @@ I.~Schur, {\"U}ber endliche gruppen und hermitesche formen, Mathematische
 \newblock \href {https://doi.org/10.1007/BF01465095}
   {\path{doi:10.1007/BF01465095}}.
 
+\bibitem{marcus1963}
+M.~Marcus, The permanent analogue of the {Hadamard} determinant theorem,
+  Bulletin of the American Mathematical Society 69~(4) (1963) 494--496.
+\newblock \href {https://doi.org/10.1090/S0002-9904-1963-10975-1}
+  {\path{doi:10.1090/S0002-9904-1963-10975-1}}.
+
 \bibitem{lieb1966}
 E.~H. Lieb, Proofs of some conjectures on permanents, Journal of Mathematics
   and Mechanics 16~(2) (1966) 127--134.
@@ -20,6 +26,12 @@ E.~H. Lieb, Proofs of some conjectures on permanents, Journal of Mathematics
 \bibitem{merris1987}
 R.~Merris, The permanental dominance conjecture, in: R.~Grone, F.~Uhlig (Eds.),
   Current Trends in Matrix Theory, North-Holland, New York, 1987, pp. 213--223.
+
+\bibitem{merriswatkins1985}
+R.~Merris, W.~Watkins, Inequalities and identities for generalized matrix
+  functions, Linear Algebra and its Applications 64 (1985) 223--242.
+\newblock \href {https://doi.org/10.1016/0024-3795(85)90279-4}
+  {\path{doi:10.1016/0024-3795(85)90279-4}}.
 
 \bibitem{heyfron1988}
 P.~Heyfron, Immanant dominance orderings for hook partitions, Linear and
@@ -70,6 +82,12 @@ I.~M. Wanless, {Lieb}'s permanental dominance conjecture, in: The Physics and
   2022, pp. 501--516.
 \newblock \href {https://doi.org/10.4171/90-2/48} {\path{doi:10.4171/90-2/48}}.
 
+\bibitem{rodtes2024}
+K.~Rodtes, Some remarks on permanental dominance conjecture, Advances in
+  Applied Mathematics 160 (2024) 102758.
+\newblock \href {https://doi.org/10.1016/j.aam.2024.102758}
+  {\path{doi:10.1016/j.aam.2024.102758}}.
+
 \bibitem{jingliu2025}
 N.~Jing, Y.~Liu, J.~Zhang, Immanant inequalities and weight spaces (2025).
 \newblock \href {http://arxiv.org/abs/2508.20382} {\path{arXiv:2508.20382}},
@@ -81,6 +99,12 @@ S.~Geller, E.~Knill, Measuring multiparticle indistinguishability with the
   generalized bunching probability, Physical Review A 113~(4) (2026) 042606.
 \newblock \href {https://doi.org/10.1103/1x5l-jd26}
   {\path{doi:10.1103/1x5l-jd26}}.
+
+\bibitem{tabata2015}
+R.~Tabata, The values of the generalized matrix functions of {$3 \times 3$}
+  matrices, Hiroshima Mathematical Journal 45~(1) (2015) 1--8.
+\newblock \href {https://doi.org/10.32917/hmj/1428365051}
+  {\path{doi:10.32917/hmj/1428365051}}.
 
 \bibitem{barretthallloewy1999}
 W.~Barrett, H.~T. Hall, R.~Loewy, The cone of class function inequalities for

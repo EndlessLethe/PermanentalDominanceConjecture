@@ -118,12 +118,22 @@ generalized bosonic bunching probabilities \cite{gellerknill2026}.
 Most of the literature concerns the immanant specialization $H=\Sn_n$.
 That specialization is known in several broad families and, in particular,
 through order thirteen; these results do not by themselves cover characters
-of proper subgroups \cite{zhang2016,wanless2022}.  The distinction matters
-already in order four: $\Sn_4$ has five irreducible characters, whereas all
-subgroups of $\Sn_4$ contribute thirty-seven irreducible-character cases,
-including non-real characters.  To the best of our knowledge, a uniform
-proof covering every subgroup $H\leq\Sn_4$ and every irreducible character of
-$H$ has not previously been recorded.
+of proper subgroups \cite{zhang2016,wanless2022}.  In order four, Barrett,
+Hall, and Loewy characterized the cone of class-function inequalities and
+hence the inequalities among linear combinations of $\Sn_4$-immanants
+\cite{barretthallloewy1999}.  James also exhibited a positive-semidefinite
+matrix giving equality for one of the non-real $A_4$ characters
+\cite{james1992,cheonwanless2005,wanless2022}.
+
+These order-four results do not settle the full subgroup problem.  A
+character of a proper subgroup, extended by zero to $\Sn_4$, need not be a
+class function on $\Sn_4$; in particular, odd conjugation interchanges the
+two non-real characters of $A_4$.  The distinction produces a substantially
+larger finite problem: $\Sn_4$ has five irreducible characters, whereas all
+subgroups of $\Sn_4$ contribute thirty-seven irreducible-character cases.
+To the best of our knowledge, a uniform proof covering every subgroup
+$H\leq\Sn_4$ and every irreducible character of $H$ has not previously been
+recorded.
 
 This paper proves precisely that all-subgroup statement for every
 $4\times4$ Hermitian positive-semidefinite matrix.  The proof has three main
@@ -1330,14 +1340,21 @@ The theorem has been formalized in Lean 4.19.0 with Mathlib 4.19.0.  The
 formal development verifies the subgroup and character enumeration, all
 cycle expansions, the residual normalization identity, the rational Gram
 certificate, and the final passage from correlation matrices to the full
-positive-semidefinite cone.  The main statement is in the module
-\[
- \texttt{NormalizedPermanentalDominance}.
-\]
+positive-semidefinite cone.  The public theorem is
+\texttt{normalized\_permanental\_dominance\_n4} in the module
+\texttt{PermanentalDominance.N4.}\allowbreak
+\texttt{NormalizedPermanentalDominance}.
 A detailed module map and an axiom audit are included with the source.  The
 formalization is supplementary: the
 identities and sign certificates needed for the mathematical proof have been
 displayed above rather than delegated to the proof assistant.
+
+OpenAI ChatGPT and Codex were used as AI-assisted tools during mathematical
+exploration and the development of portions of the Lean formalization.  The
+generated suggestions and code were not treated as mathematical evidence:
+the stated results were checked by Lean and Mathlib, the imported dependency
+closure was subjected to the accompanying axiom audit, and the author
+reviewed the final formal and manuscript content.
 
 The formal source used here was extracted from the immutable merge commit
 \href{https://github.com/EndlessLethe/math/commit/c5e4d8c61f08d05ffe7c28bfa1ea732d8827b485}
@@ -1354,17 +1371,22 @@ public, commercial, or not-for-profit sectors.
 
 \section*{Data and code availability}
 No external data were used in this study.  The accompanying Lean
-formalization and the source of this manuscript are available from the
+formalization is available from the
 \href{https://github.com/EndlessLethe/PermanentalDominanceConjecture}
-{companion repository}; the immutable formalization provenance is the commit
+{companion repository}, and the LAA manuscript source is available from its
+\href{https://github.com/EndlessLethe/PermanentalDominanceConjecture/tree/codex/laa-preprint/preprint}
+{submission branch}.  The immutable formalization provenance is the commit
 identified in the preceding section.
 
 \section*{Declaration of generative AI and AI-assisted technologies in the
 manuscript preparation process}
-During the preparation of this work, the author used OpenAI ChatGPT to assist
-with mathematical exploration, manuscript drafting, language editing, and
-LaTeX preparation.  The author reviewed and edited all generated content and
-takes full responsibility for the accuracy and integrity of the work.
+During the preparation of this work, the author used OpenAI ChatGPT and Codex
+to assist with mathematical exploration, development of the Lean
+formalization, literature organization, manuscript drafting, language
+editing, and LaTeX preparation.  The research-method use is described in the
+formal-verification section above.  The author reviewed and edited all
+generated content and takes full responsibility for the accuracy and
+integrity of the work.
 
 \bibliographystyle{elsarticle-num}
 \bibliography{references}

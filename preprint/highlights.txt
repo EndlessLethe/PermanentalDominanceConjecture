@@ -1,4 +1,4 @@
-- Permanental dominance is proved for every subgroup character of S_4.
-- The 37 irreducible cases reduce to two non-real characters of A_4.
-- The exceptional gap becomes a polynomial on 3 x 3 Gram matrices.
-- Exact SOS, Hessian, and rational Gram certificates establish positivity.
+- Permanental dominance is proved for all subgroup characters in degree four.
+- Thirty-seven irreducible cases reduce to two nonreal characters.
+- The exceptional gap becomes a polynomial on three-by-three Gram matrices.
+- Exact sum-of-squares, Hessian, and Gram certificates prove positivity.

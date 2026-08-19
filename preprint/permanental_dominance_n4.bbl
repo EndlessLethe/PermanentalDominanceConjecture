@@ -82,4 +82,17 @@ S.~Geller, E.~Knill, Measuring multiparticle indistinguishability with the
 \newblock \href {https://doi.org/10.1103/1x5l-jd26}
   {\path{doi:10.1103/1x5l-jd26}}.
 
+\bibitem{barretthallloewy1999}
+W.~Barrett, H.~T. Hall, R.~Loewy, The cone of class function inequalities for
+  the {4}-by-{4} positive semidefinite matrices, Proceedings of the London
+  Mathematical Society 79~(1) (1999) 107--130.
+\newblock \href {https://doi.org/10.1112/S0024611599011909}
+  {\path{doi:10.1112/S0024611599011909}}.
+
+\bibitem{james1992}
+G.~D. James, Immanants, Linear and Multilinear Algebra 32~(3--4) (1992)
+  197--210.
+\newblock \href {https://doi.org/10.1080/03081089208818163}
+  {\path{doi:10.1080/03081089208818163}}.
+
 \end{thebibliography}

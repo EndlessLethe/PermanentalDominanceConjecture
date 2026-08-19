@@ -76,9 +76,68 @@ also yields a positive-semidefinite adjugate certificate for the exceptional
 $A_4$ rows.
 \end{abstract}
 
+\setcounter{tocdepth}{1}
 \tableofcontents
 
-\section{Statement of the theorem}
+\section{Introduction}
+
+The normalized permanental-dominance problem compares two ways of summing
+permutation monomials of a positive-semidefinite matrix.  The permanent uses
+every permutation with coefficient one.  A generalized matrix function uses
+only a subgroup and weights its elements by an irreducible character.  The
+claim is that, after division by the character degree, none of these weighted
+sums exceeds the permanent.
+
+In dimension four the statement is finite but not automatic.  There are
+eleven conjugacy types of subgroups of $\Sn_4$ and thirty-seven irreducible
+character rows.  Thirty-five rows are controlled by familiar inequalities
+for correlation matrices.  The genuine obstruction is concentrated in the
+two conjugate non-real one-dimensional characters of $A_4$.  Thus the group
+theory is essential for completeness, but the mathematical core of the proof
+is a single geometric inequality.
+
+The organizing idea is to write the exceptional gap as
+\[
+ c_0(u,v,w)+q^*K(u,v,w)q.
+\]
+The block positivity constraint says that $B(u,v,w)-qq^*$ is a Gram matrix.
+After dividing out the nonzero coordinates of $q$, this residual becomes the
+Gram matrix $R$ of three vectors, and the exceptional gap factors as
+\[
+ |q_1q_2q_3|^2\mathcal P(R).
+\]
+The problem is therefore moved from a character sum on four indices to the
+nonnegativity of one explicit polynomial on the cone of $3\times3$ Gram
+matrices.
+
+The complete proof may be read through the following chain:
+\begin{equation*}
+\begin{aligned}
+A\psd
+&\longrightarrow \text{a correlation matrix}
+ \longrightarrow \text{thirty-seven representative character rows}\\
+&\longrightarrow \text{thirty-five routine rows plus two non-real $A_4$ rows}\\
+&\longrightarrow c_0+q^*Kq
+ \longrightarrow |q_1q_2q_3|^2\mathcal P(R)\\
+&\longrightarrow
+ \begin{cases}
+ \text{a rank-one sum of squares},\\
+ \text{a positive-definite Hessian/minimum certificate},\\
+ \text{closure on the positive-semidefinite boundary}.
+ \end{cases}
+\end{aligned}
+\end{equation*}
+
+Section~\ref{sec:statement-reductions} fixes the normalization and removes
+the diagonal parameters.  Section~\ref{sec:finite-reduction} proves that the
+finite list of rows is complete, and Section~\ref{sec:routine-rows} eliminates
+the thirty-five routine rows.  Sections~\ref{sec:a4-geometry} and
+\ref{sec:Ppositive} contain the geometric argument.  The proof is assembled
+in Section~\ref{sec:completion}; exact coefficient certificates and the Lean
+correspondence are kept in the appendices so that they do not interrupt the
+main line of reasoning.
+
+\section{Statement and general reductions}\label{sec:statement-reductions}
 
 Let $n\geq1$, let $H\leq\Sn_n$, and let $\chi:H\to\CC$ be a character.
 For $A=(A_{ij})\in M_n(\CC)$ put
@@ -123,7 +182,7 @@ The scope of Theorem~\ref{thm:main} is exactly dimension four.  It includes
 every subgroup of $\Sn_4$ and every irreducible complex representation of
 that subgroup, but it does not assert the conjecture in arbitrary dimension.
 
-\section{Reduction to correlation matrices}
+\subsection{Reduction to correlation matrices}
 
 The normalization step is elementary but important because it removes all
 diagonal parameters without an invertibility hypothesis.
@@ -178,7 +237,7 @@ We therefore write a general $4\times4$ correlation matrix as
  }\psd.
 \end{equation}
 
-\section{The finite group-theoretic reduction}
+\section{Finite character reduction}\label{sec:finite-reduction}
 
 \subsection{Subgroups and characters}
 
@@ -228,41 +287,14 @@ different order, orbit structure, or involution type, so the listed types are
 not conjugate to one another.
 \end{proof}
 
-For later reference, the non-cyclic character tables are recorded below.
-The class order for $S_4$ is
-$1,(12),(12)(34),(123),(1234)$:
-\begin{equation}\label{eq:s4-table}
-\begin{array}{c|rrrrr}
- &1&(12)&(12)(34)&(123)&(1234)\\\hline
-{[4]}    &1& 1& 1& 1& 1\\
-{[1^4]}  &1&-1& 1& 1&-1\\
-{[31]}   &3& 1&-1& 0&-1\\
-{[211]}  &3&-1&-1& 0& 1\\
-{[22]}   &2& 0& 2&-1& 0
-\end{array}
-\end{equation}
-For $A_4$, with $C_+$ and $C_-$ the two classes of three-cycles and
-\[
+The character data used below are recorded in
+Appendix~\ref{app:character-data}.  Orthogonality of those rows and the
+identity $\sum_\chi\chi(1)^2=|H|$ prove that no irreducible character is
+missing.  For the two exceptional $A_4$ rows we fix
+\begin{equation}\label{eq:omega}
  \omega=-\frac12-\frac{\sqrt3}{2}i,
- \qquad \omega^2+\omega+1=0,
-\]
-the table is
-\begin{equation}\label{eq:a4-table}
-\begin{array}{c|rrrr}
- &1&(12)(34)&C_+&C_-\\\hline
-1&1&1&1&1\\
-\chi_\omega&1&1&\omega&\omega^2\\
-\bar\chi_\omega&1&1&\omega^2&\omega\\
-\chi_3&3&-1&0&0.
-\end{array}
+ \qquad \omega^2+\omega+1=0.
 \end{equation}
-For $D_8=\langle r,s:r^4=s^2=1,srs=r^{-1}\rangle$, the four linear
-characters take independent signs on $r$ and $s$, while its two-dimensional
-character is $2,-2,0,0,0$ on
-$1,r^2,\{r,r^3\},\{s,r^2s\},\{rs,r^3s\}$.  The familiar tables of $C_m$,
-$C_2^2$, and $S_3$ complete all thirty-seven rows.  Orthogonality of the
-displayed rows and the identity $\sum_\chi\chi(1)^2=|H|$ prove that no
-irreducible character is missing.
 
 \subsection{Conjugation invariance}
 
@@ -289,7 +321,7 @@ Summing proves the assertion.
 Thus it suffices to prove dominance for the thirty-seven rows of the eleven
 fixed representatives.
 
-\section{Correlation coordinates and the routine rows}
+\section{Routine character rows}\label{sec:routine-rows}
 
 \subsection{Four cycle aggregates}
 
@@ -466,7 +498,14 @@ rows, while its three-dimensional row is the average of the $[31]$ and
 $[211]$ rows.  This proves the asserted thirty-five rows.
 \end{proof}
 
-\section{The exceptional non-real \texorpdfstring{$A_4$}{A4} gap}
+\section{The exceptional \texorpdfstring{$A_4$}{A4} geometry}
+\label{sec:a4-geometry}
+
+\subsection{The exceptional character gap}
+
+The preceding section deliberately has an eliminative role: it reduces the
+entire theorem to two conjugate character rows.  We now leave the finite
+table calculation behind and treat their common geometric content.
 
 Let
 \begin{equation}\label{eq:Buvw}
@@ -519,40 +558,20 @@ Then
 \end{equation}
 \end{theorem}
 
-The proof occupies Sections~\ref{sec:normalization}--\ref{sec:Ppositive}.
-Before giving it, we record the matrix certificate that motivated the
-geometric formulation.
+The proof is developed in the residual normalization below and in
+Section~\ref{sec:Ppositive}.
 
-\begin{lemma}[Ellipsoid-to-adjugate certificate]\label{lem:ellipsoid}
-Let $B,K\in M_m(\CC)$ with $B\psd$ and $K=K^*$, and let $c\in\RR$.  If
-\[
- \mat{B&q\\q^*&1}\psd\quad\Longrightarrow\quad c+q^*Kq\geq0
-\]
-for every $q\in\CC^m$, then
-\begin{equation}\label{eq:adj-certificate}
- (\det B)K+c\,\adj(B)\psd.
-\end{equation}
-\end{lemma}
+\subsection{Residual-vector normalization}\label{sec:normalization}
 
-\begin{proof}
-If $\det B=0$, the choice $q=0$ gives $c\geq0$ and
-$\adj(B)\psd$, so~\eqref{eq:adj-certificate} follows.  If $\det B>0$, then
-$B\pd$ and the block condition is $q^*B^{-1}q\leq1$.  Given $y\neq0$, set
-\[
- q=\frac{y}{\sqrt{y^*B^{-1}y}}.
-\]
-The hypothesis, multiplied by $y^*B^{-1}y$, says
-$y^*(K+cB^{-1})y\geq0$.  Hence $K+cB^{-1}\psd$.  Multiplication by
-$\det B>0$ and the identity $\adj(B)=(\det B)B^{-1}$ prove the claim.
-\end{proof}
-
-Applied to~\eqref{eq:c0}--\eqref{eq:K}, this gives the geometric spectral
-certificate
-\begin{equation}\label{eq:a4-certificate}
- (\det B(u,v,w))K(u,v,w)+c_0(u,v,w)\adj(B(u,v,w))\psd.
-\end{equation}
-
-\section{Residual-vector normalization}\label{sec:normalization}
+There is a useful geometric meaning behind the next change of variables.
+Realize the block matrix~\eqref{eq:completion} as the Gram matrix of four unit
+vectors.  The vector corresponding to the last row and column determines a
+common one-dimensional direction.  Subtracting the projections of the first
+three vectors onto that direction leaves three residual vectors, whose Gram
+matrix is $B-qq^*$.  Dividing the residual vectors by the coordinates of the
+removed projections does not change positivity; it merely produces the
+scale-free matrix $R$ below.  This is the step that turns a four-vector
+completion problem into a problem on the cone of three-vector Gram matrices.
 
 Assume first that $q_1q_2q_3\neq0$.  The Schur complement of the final
 diagonal entry in~\eqref{eq:completion} is
@@ -628,6 +647,15 @@ For every Hermitian matrix $R$ of the form~\eqref{eq:residual-gram},
 \end{theorem}
 
 \section{Positivity of the geometric polynomial}\label{sec:Ppositive}
+
+The proof uses the geometry of the Gram cone in three stages.  On the
+rank-one locus the three residual vectors are collinear and the polynomial
+has a direct sum-of-squares form.  In the positive-definite region, two
+residual vectors are used as coordinates and the third is minimized through
+an explicit two-dimensional Hermitian Hessian.  Finally, every singular Gram
+matrix is obtained as a limit of positive-definite ones.  The rank-one
+calculation is also the algebraic base coefficient in the interior minimum
+certificate, so it is both explanatory and logically active.
 
 \subsection{The rank-one boundary}
 
@@ -875,7 +903,47 @@ matrix remains positive semidefinite, so the already proved case applies.
 Letting $t\downarrow0$ and using continuity proves the result.
 \end{proof}
 
-\section{Completion of the proof}
+\subsection{The resulting matrix certificate}
+
+The four-vector inequality has a useful matrix consequence.  We record it
+after the direct proof so that it does not obscure the residual-vector
+argument that establishes it.
+
+\begin{lemma}[Ellipsoid-to-adjugate certificate]\label{lem:ellipsoid}
+Let $B,K\in M_m(\CC)$ with $B\psd$ and $K=K^*$, and let $c\in\RR$.  If
+\[
+ \mat{B&q\\q^*&1}\psd\quad\Longrightarrow\quad c+q^*Kq\geq0
+\]
+for every $q\in\CC^m$, then
+\begin{equation}\label{eq:adj-certificate}
+ (\det B)K+c\,\adj(B)\psd.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+If $\det B=0$, the choice $q=0$ gives $c\geq0$ and
+$\adj(B)\psd$, so~\eqref{eq:adj-certificate} follows.  If $\det B>0$, then
+$B\pd$ and the block condition is $q^*B^{-1}q\leq1$.  Given $y\neq0$, set
+\[
+ q=\frac{y}{\sqrt{y^*B^{-1}y}}.
+\]
+The hypothesis, multiplied by $y^*B^{-1}y$, says
+$y^*(K+cB^{-1})y\geq0$.  Hence $K+cB^{-1}\psd$.  Multiplication by
+$\det B>0$ and the identity $\adj(B)=(\det B)B^{-1}$ prove the claim.
+\end{proof}
+
+Applied to~\eqref{eq:c0}--\eqref{eq:K}, Lemma~\ref{lem:ellipsoid} gives the
+positive-semidefinite certificate
+\begin{equation}\label{eq:a4-certificate}
+ (\det B(u,v,w))K(u,v,w)+c_0(u,v,w)\adj(B(u,v,w))\psd.
+\end{equation}
+
+\section{Completion of the proof}\label{sec:completion}
+
+No new inequality is needed in this section.  We now follow the roadmap in
+reverse: the geometric polynomial proves the four-vector inequality, that
+inequality settles the two exceptional character rows, and the finite
+classification then recovers every subgroup and irreducible representation.
 
 \begin{proposition}[The two non-real $A_4$ rows]\label{prop:a4-rows}
 For every $4\times4$ positive-semidefinite correlation matrix $A$,
@@ -906,6 +974,43 @@ positive-semidefinite cone.
 \end{proof}
 
 \appendix
+
+\section{Character data}\label{app:character-data}
+
+This appendix records the non-cyclic character data used in the finite row
+reduction.  For $S_4$, order the conjugacy classes as
+$1,(12),(12)(34),(123),(1234)$.  Its irreducible character table is
+\begin{equation}\label{eq:s4-table}
+\begin{array}{c|rrrrr}
+ &1&(12)&(12)(34)&(123)&(1234)\\\hline
+{[4]}    &1& 1& 1& 1& 1\\
+{[1^4]}  &1&-1& 1& 1&-1\\
+{[31]}   &3& 1&-1& 0&-1\\
+{[211]}  &3&-1&-1& 0& 1\\
+{[22]}   &2& 0& 2&-1& 0
+\end{array}
+\end{equation}
+
+For $A_4$, let $C_+$ and $C_-$ be the two conjugacy classes of
+three-cycles.  With $\omega$ as in~\eqref{eq:omega}, the table is
+\begin{equation}\label{eq:a4-table}
+\begin{array}{c|rrrr}
+ &1&(12)(34)&C_+&C_-\\\hline
+1&1&1&1&1\\
+\chi_\omega&1&1&\omega&\omega^2\\
+\bar\chi_\omega&1&1&\omega^2&\omega\\
+\chi_3&3&-1&0&0.
+\end{array}
+\end{equation}
+
+For $D_8=\langle r,s:r^4=s^2=1,srs=r^{-1}\rangle$, the four linear
+characters take independent signs on $r$ and $s$, while its two-dimensional
+character is $2,-2,0,0,0$ on
+\[
+ 1,\quad r^2,\quad\{r,r^3\},\quad\{s,r^2s\},\quad\{rs,r^3s\}.
+\]
+The standard character tables of $C_m$, $C_2^2$, and $S_3$ supply the
+remaining rows listed in Section~\ref{sec:routine-rows}.
 
 \section{Exact scalar and Gram certificates}\label{app:sos}
 

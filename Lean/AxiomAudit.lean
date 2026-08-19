@@ -1,0 +1,13 @@
+import PermanentalDominance
+
+#check @PermanentalDominance.N4.normalized_permanental_dominance_n4
+#check @PermanentalDominance.N4.normalized_permanental_dominance_n4_real
+#check @PermanentalDominance.N4.A4GeometricPSD.geometricP_nonneg_of_posSemidef
+#check @PermanentalDominance.N4.A4GeometricFourVector.fourVectorProperty
+#check @PermanentalDominance.N4.A4GeometricBridge.certificate_posSemidef_geometric
+
+#print axioms PermanentalDominance.N4.normalized_permanental_dominance_n4
+#print axioms PermanentalDominance.N4.normalized_permanental_dominance_n4_real
+#print axioms PermanentalDominance.N4.A4GeometricPSD.geometricP_nonneg_of_posSemidef
+#print axioms PermanentalDominance.N4.A4GeometricFourVector.fourVectorProperty
+#print axioms PermanentalDominance.N4.A4GeometricBridge.certificate_posSemidef_geometric

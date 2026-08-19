@@ -1,0 +1,8 @@
+import PermanentalDominance.N4.NormalizedPermanentalDominance
+import PermanentalDominance.N4.A4GeometricBridge
+import PermanentalDominance.N4.A4GeometricNormalization
+import PermanentalDominance.N4.A4GeometricRankOne
+import PermanentalDominance.N4.A4GeometricGeneral
+import PermanentalDominance.N4.A4GeometricGram
+import PermanentalDominance.N4.A4GeometricAssembly
+import PermanentalDominance.N4.A4GeometricHessian

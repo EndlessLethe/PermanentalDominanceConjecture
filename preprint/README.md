@@ -41,7 +41,8 @@ latexmk -c permanental_dominance_n4.tex
 ## Author metadata
 
 The front matter identifies Siwei Zeng as an independent researcher and uses
-`endlesslethe@gmail.com` as the corresponding-author email.
+`endlesslethe@gmail.com` as the corresponding-author email. The author's ORCID
+is [`0009-0008-8914-7143`](https://orcid.org/0009-0008-8914-7143).
 
 Elsevier Editorial Manager expects the submitted LaTeX source files at one
 folder level. Upload the contents of this directory together rather than

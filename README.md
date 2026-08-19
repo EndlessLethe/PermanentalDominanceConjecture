@@ -16,7 +16,8 @@ This is the complete $n=4$ result. It is not a proof in arbitrary dimension.
 ## Repository layout
 
 - `Lean/`: a standalone Lean 4 project containing the formal proof, an axiom audit, and a proof map.
-- `LaTeX/`: the paper source and a compiled PDF of the direct geometric proof.
+- `LaTeX/`: the original paper source and compiled PDF of the direct geometric proof.
+- `preprint/`: a self-contained LAA/Elsevier submission build with cited literature, BibTeX, generated bibliography, and compiled PDF.
 - `README.md`: scope, status, and build instructions.
 
 ## Proof route
@@ -45,6 +46,13 @@ To rebuild the manuscript PDF, install a standard TeX Live distribution with `la
 ```sh
 cd LaTeX
 latexmk -pdf -interaction=nonstopmode -halt-on-error PermanentalDominanceN4.tex
+```
+
+To rebuild the LAA preprint with its bibliography, run:
+
+```sh
+cd preprint
+latexmk -pdf -interaction=nonstopmode -halt-on-error permanental_dominance_n4.tex
 ```
 
 ## Provenance

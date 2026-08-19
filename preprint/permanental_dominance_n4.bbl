@@ -1,0 +1,85 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{schur1918}
+I.~Schur, {\"U}ber endliche gruppen und hermitesche formen, Mathematische
+  Zeitschrift 1~(2--3) (1918) 184--207.
+\newblock \href {https://doi.org/10.1007/BF01465095}
+  {\path{doi:10.1007/BF01465095}}.
+
+\bibitem{lieb1966}
+E.~H. Lieb, Proofs of some conjectures on permanents, Journal of Mathematics
+  and Mechanics 16~(2) (1966) 127--134.
+\newblock \href {https://doi.org/10.1512/iumj.1967.16.16008}
+  {\path{doi:10.1512/iumj.1967.16.16008}}.
+
+\bibitem{merris1987}
+R.~Merris, The permanental dominance conjecture, in: R.~Grone, F.~Uhlig (Eds.),
+  Current Trends in Matrix Theory, North-Holland, New York, 1987, pp. 213--223.
+
+\bibitem{heyfron1988}
+P.~Heyfron, Immanant dominance orderings for hook partitions, Linear and
+  Multilinear Algebra 24~(1) (1988) 65--78.
+
+\bibitem{pate1991}
+T.~H. Pate, Partitions, irreducible characters, and inequalities for
+  generalized matrix functions, Transactions of the American Mathematical
+  Society 325~(2) (1991) 875--894.
+\newblock \href {https://doi.org/10.1090/S0002-9947-1991-0998356-3}
+  {\path{doi:10.1090/S0002-9947-1991-0998356-3}}.
+
+\bibitem{pate1998}
+T.~H. Pate, Row appending maps, {$\Psi$}-functions, and immanant inequalities
+  for hermitian positive semi-definite matrices, Proceedings of the London
+  Mathematical Society 76~(2) (1998) 307--358.
+\newblock \href {https://doi.org/10.1112/S0024611598000100}
+  {\path{doi:10.1112/S0024611598000100}}.
+
+\bibitem{pate1999}
+T.~H. Pate, Tensor inequalities, {$\zeta$}-functions and inequalities involving
+  immanants, Linear Algebra and its Applications 295~(1--3) (1999) 31--59.
+\newblock \href {https://doi.org/10.1016/S0024-3795(99)00014-2}
+  {\path{doi:10.1016/S0024-3795(99)00014-2}}.
+
+\bibitem{soules1994}
+G.~W. Soules, An approach to the permanental-dominance conjecture, Linear
+  Algebra and its Applications 201 (1994) 211--229.
+\newblock \href {https://doi.org/10.1016/0024-3795(94)90117-1}
+  {\path{doi:10.1016/0024-3795(94)90117-1}}.
+
+\bibitem{cheonwanless2005}
+G.-S. Cheon, I.~M. Wanless, An update on {Minc}'s survey of open problems
+  involving permanents, Linear Algebra and its Applications 403 (2005)
+  314--342.
+\newblock \href {https://doi.org/10.1016/j.laa.2005.02.030}
+  {\path{doi:10.1016/j.laa.2005.02.030}}.
+
+\bibitem{zhang2016}
+F.~Zhang, An update on a few permanent conjectures, Special Matrices 4~(1)
+  (2016) 305--316.
+\newblock \href {https://doi.org/10.1515/spma-2016-0030}
+  {\path{doi:10.1515/spma-2016-0030}}.
+
+\bibitem{wanless2022}
+I.~M. Wanless, {Lieb}'s permanental dominance conjecture, in: The Physics and
+  Mathematics of Elliott Lieb: The 90th Anniversary, Vol.~2, EMS Press, Berlin,
+  2022, pp. 501--516.
+\newblock \href {https://doi.org/10.4171/90-2/48} {\path{doi:10.4171/90-2/48}}.
+
+\bibitem{jingliu2025}
+N.~Jing, Y.~Liu, J.~Zhang, Immanant inequalities and weight spaces (2025).
+\newblock \href {http://arxiv.org/abs/2508.20382} {\path{arXiv:2508.20382}},
+  \href {https://doi.org/10.48550/arXiv.2508.20382}
+  {\path{doi:10.48550/arXiv.2508.20382}}.
+
+\bibitem{gellerknill2026}
+S.~Geller, E.~Knill, Measuring multiparticle indistinguishability with the
+  generalized bunching probability, Physical Review A 113~(4) (2026) 042606.
+\newblock \href {https://doi.org/10.1103/1x5l-jd26}
+  {\path{doi:10.1103/1x5l-jd26}}.
+
+\end{thebibliography}

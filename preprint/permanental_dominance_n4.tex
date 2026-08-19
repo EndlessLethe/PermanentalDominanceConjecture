@@ -286,11 +286,15 @@ We therefore write a general $4\times4$ correlation matrix as
 
 \subsection{Subgroups and characters}
 
-Up to conjugacy, the subgroups of $\Sn_4$ have the following eleven types.
+Table~\ref{tab:s4-subgroups} lists the eleven conjugacy types of subgroups of
+$\Sn_4$.
 Here the superscripts ${\rm t},{\rm d},{\rm n}$ denote transposition,
 double transposition, and normal, respectively; in the dihedral row,
 $r=(1234)$ and $s=(13)$.
-\begin{center}
+\begin{table}[htbp]
+\caption{Conjugacy classes of subgroups of $S_4$ and their irreducible-character counts.}
+\label{tab:s4-subgroups}
+\centering
 \small
 \begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xlrr@{}}
 \toprule
@@ -309,12 +313,12 @@ $A_4$ & $A_4$ & $A_4$ &12&4\\
 $S_4$ & $S_4$ & $S_4$ &24&5\\
 \bottomrule
 \end{tabularx}
-\end{center}
-The final column sums to $37$.
+\end{table}
+The final column of Table~\ref{tab:s4-subgroups} sums to $37$.
 
 \begin{lemma}[Subgroup classification]\label{lem:subgroup-classification}
 Every subgroup of $\Sn_4$ is conjugate to exactly one of the eleven types in
-the preceding table.
+Table~\ref{tab:s4-subgroups}.
 \end{lemma}
 
 \begin{proof}
@@ -562,8 +566,8 @@ $R_\wedge\leq P$, completing the proof.
 \subsection{Character cases covered by the general inequalities}
 
 The following proposition records the finite analytic part of the proof.
-Its table makes clear that the only cases not covered are the two non-real
-$A_4$ characters.
+Table~\ref{tab:elementary-character-expansions} makes clear that the only
+cases not covered are the two non-real $A_4$ characters.
 
 \begin{proposition}[The thirty-five elementary character cases]\label{prop:elementary-cases}
 For every representative subgroup in Lemma~\ref{lem:subgroup-classification},
@@ -575,7 +579,10 @@ $\bar\chi_\omega$ of $A_4$ are bounded above by $\per A$.
 \begin{proof}
 The cyclic, Klein-four, and $S_3$ expansions are as follows.  In the $C_3$
 and $S_3$ cases put $z=ad\bar b$.
-\begin{center}
+\begin{table}[htbp]
+\caption{Normalized generalized matrix functions for the elementary subgroup cases.}
+\label{tab:elementary-character-expansions}
+\centering
 \small
 \begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X@{}}
 \toprule
@@ -592,7 +599,7 @@ $S_3$ & $1+|a|^2+|b|^2+|d|^2+2\Rea z$,\\
 & $1-|a|^2-|b|^2-|d|^2+2\Rea z$,\quad $1-\Rea z$\\
 \bottomrule
 \end{tabularx}
-\end{center}
+\end{table}
 These expressions follow by listing the elements of the corresponding
 subgroup.  We give the inequalities explicitly.  Set
 \[

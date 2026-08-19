@@ -38,11 +38,10 @@ To remove transient build products:
 latexmk -c permanental_dominance_n4.tex
 ```
 
-## Before submission
+## Author metadata
 
-Add the author's affiliation, postal address, and corresponding-author email
-to the front matter when those details are finalized. They are intentionally
-not guessed here.
+The front matter identifies Siwei Zeng as an independent researcher and uses
+`endlesslethe@gmail.com` as the corresponding-author email.
 
 Elsevier Editorial Manager expects the submitted LaTeX source files at one
 folder level. Upload the contents of this directory together rather than

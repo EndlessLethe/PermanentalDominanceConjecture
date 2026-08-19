@@ -1,0 +1,9 @@
+/.lake/
+/Lean/.lake/
+lake-manifest.json
+/Lean/lake-manifest.json
+*.olean
+*.ilean
+/.elan/
+/.lean-dist/
+/.cache/

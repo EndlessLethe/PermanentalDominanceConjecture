@@ -46,9 +46,9 @@ P.~Heyfron, Immanant dominance orderings for hook partitions, Linear and
 \bibitem{pate1991}
 T.~H. Pate, Partitions, irreducible characters, and inequalities for
   generalized matrix functions, Transactions of the American Mathematical
-  Society 325~(2) (1991) 875--894,
-  \href{https://doi.org/10.1090/S0002-9947-1991-0998356-3}{\texttt{doi:10.1090/S0002-9947-1991-\allowbreak
-  0998356-3}}.
+  Society 325~(2) (1991) 875--894.
+\newblock \href {https://doi.org/10.1090/S0002-9947-1991-0998356-3}
+  {\path{doi:10.1090/S0002-9947-1991-0998356-3}}.
 
 \bibitem{pate1998}
 T.~H. Pate, Row appending maps, {$\Psi$}-functions, and immanant inequalities
@@ -58,10 +58,10 @@ T.~H. Pate, Row appending maps, {$\Psi$}-functions, and immanant inequalities
   {\path{doi:10.1112/S0024611598000100}}.
 
 \bibitem{pate1999}
-T.~H. Pate, Tensor inequalities, {$\zeta$}-functions and inequalities involving
+T.~H. Pate, Tensor inequalities, {$\xi$}-functions and inequalities involving
   immanants, Linear Algebra and its Applications 295~(1--3) (1999) 31--59.
-\newblock \href {https://doi.org/10.1016/S0024-3795(99)00014-2}
-  {\path{doi:10.1016/S0024-3795(99)00014-2}}.
+\newblock \href {https://doi.org/10.1016/S0024-3795(99)00035-X}
+  {\path{doi:10.1016/S0024-3795(99)00035-X}}.
 
 \bibitem{soules1994}
 G.~W. Soules, An approach to the permanental-dominance conjecture, Linear

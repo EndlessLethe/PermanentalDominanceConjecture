@@ -87,7 +87,7 @@ positive-semidefinite matrix \sep character theory \sep Gram matrix
 
 \end{frontmatter}
 
-\section{Introduction}
+\section{Introduction and main theorem}\label{sec:introduction}
 
 The determinant and permanent are the two best-known members of the family
 of generalized matrix functions.  Schur's classical theorem places the
@@ -150,15 +150,36 @@ The general subgroup conjecture was previously known through matrix order
 $n=3$ \cite{tabata2015,wanless2022}; the present theorem establishes the
 complete $n=4$ case.
 
-This paper proves precisely that all-subgroup statement for every
-$4\times4$ Hermitian positive-semidefinite matrix.  The proof has three main
-components.  First, diagonal scaling reduces the problem to correlation
-matrices, and subgroup classification reduces it to a finite list of
-character cases.  Second, general scalar and block inequalities settle all
-but the two conjugate non-real characters of $A_4$.  Third, the remaining
-character gap is converted into one polynomial inequality on the cone of
-$3\times3$ Gram matrices and proved by exact boundary and interior
-certificates.
+For $n\geq1$, $H\leq\Sn_n$, a character $\chi:H\to\CC$, and
+$A=(A_{ij})\in M_n(\CC)$, write
+\begin{equation}\label{eq:def-dchi}
+ d_\chi^H(A):=\sum_{\sigma\in H}\chi(\sigma)
+   \prod_{i=1}^n A_{i,\sigma(i)},
+ \qquad
+ \per A:=\sum_{\sigma\in\Sn_n}\prod_{i=1}^n A_{i,\sigma(i)}.
+\end{equation}
+The normalization in the conjecture is $d_\chi^H/\chi(1)$; no complex
+conjugate is placed on $\chi(\sigma)$ in~\eqref{eq:def-dchi}.
+
+\begin{theorem}[Permanental dominance in order four]\label{thm:main}
+Let $H\leq\Sn_4$, let $V$ be an irreducible finite-dimensional complex
+representation of $H$, and let $\chi$ be its character.  For every
+$A\in M_4(\CC)$ with $A\psd$,
+\begin{equation}\label{eq:main}
+  \frac{d_\chi^H(A)}{\dim V}\leq \per A.
+\end{equation}
+\end{theorem}
+
+Theorem~\ref{thm:main} concerns matrix order four only; it makes no assertion
+in arbitrary order.
+
+The proof has three deliberately separated layers.  Its conceptual step is
+the Gram-cone reduction for the two non-real $A_4$ characters.  Its
+completeness layer classifies all thirty-seven irreducible-character cases
+and resolves the other thirty-five by general inequalities.  Its
+verification layer consists of exact polynomial certificates, supplemented
+by a Lean formalization.  The latter two layers certify the scope and the
+algebra without obscuring the geometric mechanism.
 
 The organizing idea is to write the exceptional gap as
 \[
@@ -174,29 +195,20 @@ The problem is therefore moved from a character sum on four indices to the
 nonnegativity of one explicit polynomial on the cone of $3\times3$ Gram
 matrices.
 
-Section~\ref{sec:statement-reductions} fixes the normalization and removes
-the diagonal parameters.  Section~\ref{sec:finite-reduction} proves that the
-finite list of cases is complete, and Section~\ref{sec:elementary-cases}
-handles the cases covered by the general inequalities.
-Sections~\ref{sec:a4-geometry} and~\ref{sec:Ppositive} contain the geometric
-argument.  The proof is assembled in Section~\ref{sec:completion}; exact
-coefficient certificates and the Lean verification statement are kept in
-the appendices so that they do not interrupt the main line of reasoning.
+Section~\ref{sec:statement-reductions} performs the analytic reductions and
+proves that the finite ledger is complete.  Section~\ref{sec:elementary-cases}
+settles the thirty-five cases governed by general inequalities.
+Section~\ref{sec:a4-geometry} converts the exceptional character gap to the
+Gram polynomial, and Section~\ref{sec:Ppositive} proves its nonnegativity and
+completes Theorem~\ref{thm:main}.  Section~\ref{sec:matrix-consequence}
+records an adjugate-matrix consequence.  \ref{app:character-data} contains
+the complete case data, \ref{app:sos} contains the exact coefficient
+certificates, and \ref{app:formal-verification} maps
+the paper proof to its Lean counterparts.
 
-\section{Statement and general reductions}\label{sec:statement-reductions}
+\section{Reductions and the finite case ledger}\label{sec:statement-reductions}
 
-Let $n\geq1$, let $H\leq\Sn_n$, and let $\chi:H\to\CC$ be a character.
-For $A=(A_{ij})\in M_n(\CC)$ put
-\begin{equation}\label{eq:def-dchi}
- d_\chi^H(A):=\sum_{\sigma\in H}\chi(\sigma)
-   \prod_{i=1}^n A_{i,\sigma(i)},
- \qquad
- \per A:=\sum_{\sigma\in\Sn_n}\prod_{i=1}^n A_{i,\sigma(i)}.
-\end{equation}
-The normalization in the permanental-dominance conjecture is
-$d_\chi^H/\chi(1)$.  Notice that no complex conjugate is placed on
-$\chi(\sigma)$ in~\eqref{eq:def-dchi}; this convention agrees with all
-formulae below.
+\subsection{Reality and reduction to correlation matrices}
 
 \begin{lemma}[Reality]\label{lem:reality}
 If $A=A^*$ and $\chi$ is the character of a finite-dimensional complex
@@ -214,20 +226,6 @@ $\overline{\chi(\sigma)}=\chi(\sigma^{-1})$.  Hermitian symmetry gives
 Conjugating the sum and replacing $\sigma$ by $\sigma^{-1}$ proves the first
 claim.  The second is the special case $H=\Sn_n$, $\chi=1$.
 \end{proof}
-
-\begin{theorem}[Permanental dominance in order four]\label{thm:main}
-Let $H\leq\Sn_4$, let $V$ be an irreducible finite-dimensional complex
-representation of $H$, and let $\chi$ be its character.  For every
-$A\in M_4(\CC)$ with $A\psd$,
-\begin{equation}\label{eq:main}
-  \frac{d_\chi^H(A)}{\dim V}\leq \per A.
-\end{equation}
-\end{theorem}
-
-Theorem~\ref{thm:main} concerns order four only; it makes no assertion in
-arbitrary order.
-
-\subsection{Reduction to correlation matrices}
 
 The normalization step is elementary but important because it removes all
 diagonal parameters without an invertibility hypothesis.
@@ -289,9 +287,7 @@ We therefore write a general $4\times4$ correlation matrix as
  }\psd.
 \end{equation}
 
-\section{Finite character reduction}\label{sec:finite-reduction}
-
-\subsection{Subgroups and characters}
+\subsection{Subgroups and characters}\label{sec:finite-reduction}
 
 Table~\ref{tab:s4-subgroups} lists the eleven conjugacy types of subgroups of
 $\Sn_4$.
@@ -304,30 +300,6 @@ The case column in Table~\ref{tab:s4-subgroups} sums to
 \]
 Proposition~\ref{prop:elementary-cases} resolves thirty-five cases, and
 Proposition~\ref{prop:a4-characters} resolves the two non-real $A_4$ cases.
-\begin{table}[H]
-\caption{Complete ledger of the irreducible-character cases for subgroups of $S_4$.}
-\label{tab:s4-subgroups}
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xlrr>{\raggedright\arraybackslash}X@{}}
-\toprule
-type & representative & group & $|H|$ & cases & resolution\\
-\midrule
-$1$ & $\{1\}$ & $1$ & 1&1& Proposition~\ref{prop:elementary-cases}\\
-$C_2^{\rm t}$ & $\langle(12)\rangle$ & $C_2$ &2&2& Proposition~\ref{prop:elementary-cases}\\
-$C_2^{\rm d}$ & $\langle(12)(34)\rangle$ & $C_2$ &2&2& Proposition~\ref{prop:elementary-cases}\\
-$C_3$ & $\langle(123)\rangle$ & $C_3$ &3&3& Proposition~\ref{prop:elementary-cases}\\
-$C_4$ & $\langle(1234)\rangle$ & $C_4$ &4&4& Proposition~\ref{prop:elementary-cases}\\
-$V_4^{\rm n}$ & $\{1,(12)(34),$\linebreak
-$(13)(24),(14)(23)\}$ & $C_2^2$ &4&4& Proposition~\ref{prop:elementary-cases}\\
-$V_4^{\rm d}$ & $\langle(12),(34)\rangle$ & $C_2^2$ &4&4& Proposition~\ref{prop:elementary-cases}\\
-$S_3$ & $\operatorname{Stab}(4)$ & $S_3$ &6&3& Proposition~\ref{prop:elementary-cases}\\
-$D_8$ & $\langle r,s\rangle$ & $D_8$ &8&5& Proposition~\ref{prop:elementary-cases}\\
-$A_4$ & $A_4$ & $A_4$ &12&4& Proposition~\ref{prop:elementary-cases} (2); Proposition~\ref{prop:a4-characters} (2)\\
-$S_4$ & $S_4$ & $S_4$ &24&5& Proposition~\ref{prop:elementary-cases}\\
-\bottomrule
-\end{tabularx}
-\end{table}
 
 \begin{lemma}[Subgroup classification]\label{lem:subgroup-classification}
 Every subgroup of $\Sn_4$ is conjugate to exactly one of the eleven types in
@@ -353,6 +325,31 @@ distinguished by order, orbit structure, and, for the two order-two and two
 Klein-four types, by cycle type.
 \end{proof}
 
+\begin{table}[htbp]
+\caption{Finite ledger of the irreducible-character cases for subgroups of $\Sn_4$.}
+\label{tab:s4-subgroups}
+\centering
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xlrr>{\raggedright\arraybackslash}X@{}}
+\toprule
+type & representative & group & $|H|$ & cases & resolution\\
+\midrule
+$1$ & $\{1\}$ & $1$ & 1&1& principal permanent\\
+$C_2^{\rm t}$ & $\langle(12)\rangle$ & $C_2$ &2&2& principal permanent\\
+$C_2^{\rm d}$ & $\langle(12)(34)\rangle$ & $C_2$ &2&2& block contraction\\
+$C_3$ & $\langle(123)\rangle$ & $C_3$ &3&3& scalar triangle bounds\\
+$C_4$ & $\langle(1234)\rangle$ & $C_4$ &4&4& scalar and block bounds\\
+$V_4^{\rm n}$ & $\{1,(12)(34),$\linebreak
+$(13)(24),(14)(23)\}$ & $C_2^2$ &4&4& moment and scalar bounds\\
+$V_4^{\rm d}$ & $\langle(12),(34)\rangle$ & $C_2^2$ &4&4& block contraction\\
+$S_3$ & $\operatorname{Stab}(4)$ & $S_3$ &6&3& principal and scalar bounds\\
+$D_8$ & $\langle r,s\rangle$ & $D_8$ &8&5& block contractions\\
+$A_4$ & $A_4$ & $A_4$ &12&4& general bounds (2); Gram cone (2)\\
+$S_4$ & $S_4$ & $S_4$ &24&5& moment and scalar bounds\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
 The character data used below are recorded in
 \ref{app:character-data}.  Orthogonality of the character-table rows
 and the identity $\sum_\chi\chi(1)^2=|H|$ prove that no irreducible character
@@ -362,7 +359,7 @@ is missing.  For the two exceptional $A_4$ characters we fix
  \qquad \omega^2+\omega+1=0.
 \end{equation}
 
-\subsection{Conjugation invariance}
+\subsection{Conjugation and finite reduction}
 
 Simultaneous relabeling transports both the subgroup and its character data.
 
@@ -389,7 +386,7 @@ Summing proves the assertion.
 Thus it suffices to prove dominance in the thirty-seven irreducible-character
 cases associated with the eleven fixed representatives.
 
-\section{Character cases from general inequalities}\label{sec:elementary-cases}
+\section{General inequalities and the thirty-five cases}\label{sec:elementary-cases}
 
 \subsection{Four cycle aggregates}
 
@@ -581,8 +578,9 @@ $R_\wedge\leq P$, completing the proof.
 \subsection{Character cases covered by the general inequalities}
 
 The following proposition records the finite analytic part of the proof.
-Table~\ref{tab:elementary-character-expansions} makes clear that the only
-cases not covered are the two non-real $A_4$ characters.
+\ref{app:character-data} records the normalized functions used
+here.  The only cases not covered by the present proposition are the two
+non-real $A_4$ characters.
 
 \begin{proposition}[The thirty-five cases resolved by general inequalities]\label{prop:elementary-cases}
 For every representative subgroup in Lemma~\ref{lem:subgroup-classification},
@@ -593,7 +591,7 @@ $\bar\chi_\omega$ of $A_4$ are bounded above by $\per A$.
 
 \begin{proof}
 First consider the cyclic, Klein-four, and $S_3$ cases.  In the $C_3$ and
-$S_3$ cases put $z=ad\bar b$.  The expressions summarized in
+$S_3$ cases put $z=ad\bar b$.  The expressions in
 Table~\ref{tab:elementary-character-expansions} follow by listing the elements
 of the corresponding subgroup.  We give the inequalities explicitly.  Set
 \[
@@ -618,37 +616,11 @@ $1+D\leq\per A$ and each other sign pattern is no larger.  For
 $V_4^{\rm d}$, all four values are no larger than
 $(1+|a|^2)(1+|f|^2)\leq\per A$.
 
-\begin{table}[htbp]
-\caption{Normalized generalized matrix functions for the smaller subgroup cases.}
-\label{tab:elementary-character-expansions}
-\centering
-\small
-\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X@{}}
-\toprule
-group & normalized generalized matrix functions\\
-\midrule
-$1$ & $1$\\
-$C_2^{\rm t}$ & $1\pm|a|^2$\\
-$C_2^{\rm d}$ & $1\pm|a|^2|f|^2$\\
-$C_3$ & $1+2\Rea z$,\quad $1-\Rea z\pm\sqrt3\Ima z$\\
-$V_4^{\rm n}$ & $1\pm r\pm s\pm t$ with the four character sign patterns,\\
-& $r=|a|^2|f|^2$, $s=|b|^2|e|^2$, $t=|c|^2|d|^2$\\
-$V_4^{\rm d}$ & $(1\pm|a|^2)(1\pm|f|^2)$\\
-$S_3$ & $1+|a|^2+|b|^2+|d|^2+2\Rea z$,\\
-& $1-|a|^2-|b|^2-|d|^2+2\Rea z$,\quad $1-\Rea z$\\
-\bottomrule
-\end{tabularx}
-\end{table}
-
 For $C_4$, put
 \[
  r=|b|^2|e|^2,\qquad z=adf\bar c.
 \]
-Its four normalized functions are
-\begin{equation}\label{eq:c4-rows}
- 1+r+2\Rea z,\quad 1-r-2\Ima z,\quad
- 1+r-2\Rea z,\quad 1-r+2\Ima z.
-\end{equation}
+Its four normalized functions are listed in~\eqref{eq:c4-rows}.
 Put $x=|a|^2|f|^2$ and $y=|c|^2|d|^2$.  The estimates
 \[
  2|\Rea z|,\ 2|\Ima z|
@@ -658,13 +630,8 @@ show that the two values containing $+r$ are at most
 $1+r+x+y=1+D\leq\per A$.  The other two are at most
 $1-r+x+y\leq1+x+y\leq\per A$ by~\eqref{eq:block-bounds}.
 
-For $D_8$, write $p=|b|^2$, $q=|e|^2$.  The five normalized functions are
-\begin{align}
- R_+,&\quad
- (1+p)(1+q)-|af+c\bar d|^2,\nonumber\\
- &(1-p)(1-q)-|af-c\bar d|^2,\quad
- R_\wedge,\quad 1-pq.\label{eq:d8-rows}
-\end{align}
+For $D_8$, write $p=|b|^2$, $q=|e|^2$.  Its five normalized functions
+are listed in~\eqref{eq:d8-rows}.
 The first and fourth are~\eqref{eq:block-bounds}.  By~\eqref{eq:Rplus-square},
 the second differs from $R_+$ only by replacing
 $+|af+c\bar d|^2$ with $-|af+c\bar d|^2$, and hence is no larger.  The third
@@ -690,7 +657,7 @@ cases, while its three-dimensional case is the average of the $[31]$ and
 $[211]$ cases.  This proves the proposition.
 \end{proof}
 
-\section{The exceptional \texorpdfstring{$A_4$}{A4} geometry}
+\section{The exceptional \texorpdfstring{$A_4$}{A4} case: reduction to the Gram cone}
 \label{sec:a4-geometry}
 
 \subsection{The exceptional character gap}
@@ -832,36 +799,15 @@ Equations~\eqref{eq:residual-coordinates} give
  w=q_2\bar q_3(1+h_{23}),
 \]
 and $|q_i|^2(1+n_i)=1$.  Let $Q=|q_1q_2q_3|^2$.  Dividing first by $Q$
-organizes the cancellations by degree.  Direct substitution in~\eqref{eq:c0}
-gives
-\begin{align}
-\frac{c_0(u,v,w)}{Q}={}&
- (1+n_3)|1+h_{12}|^2+(1+n_2)|1+h_{13}|^2
- +(1+n_1)|1+h_{23}|^2\nonumber\\
-&+2\Rea\bigl((1-\omega)(1+h_{12})(1+h_{23})
-                   (1+\bar h_{13})\bigr).\label{eq:c0-normalized}
-\end{align}
-For the quadratic part, the diagonal terms and the three upper-triangular
-entries of $K$ give
-\begin{align}
-\frac{q^*Kq}{Q}={}&
- (1+n_2)(1+n_3)+(1+n_1)(1+n_3)+(1+n_1)(1+n_2)\nonumber\\
-&+2\Rea\Bigl(
- (1-\omega^2)(1+n_3)(1+h_{12})
- +(1+h_{13})(1+\bar h_{23})\nonumber\\
-&\qquad +(1+h_{12})(1+h_{23})
- +(1-\omega)(1+n_2)(1+h_{13})\nonumber\\
-&\qquad +(1-\omega^2)(1+n_1)(1+h_{23})
- +(1+h_{13})(1+\bar h_{12})\Bigr).
-\label{eq:K-normalized}
-\end{align}
-Equations~\eqref{eq:c0-normalized}--\eqref{eq:K-normalized} are obtained
-term by term; for example,
+organizes the cancellations by degree.  The two exact quotient expansions
+are recorded in~\eqref{eq:c0-normalized}--\eqref{eq:K-normalized}.
+They are obtained term by term;
+for example,
 \[
  \frac{|u|^2}{Q}=(1+n_3)|1+h_{12}|^2,\qquad
  \frac{uw\bar v}{Q}=(1+h_{12})(1+h_{23})(1+\bar h_{13}).
 \]
-Expanding these two displayed identities and using
+Expanding the two quotient formulas and using
 $1+\omega+\omega^2=0$ groups the degree-two terms as $2S-S_\omega$ and the
 degree-three terms as $\Gamma$; the remaining terms are the constant and
 linear part in~\eqref{eq:geometric-P}.  Thus their sum is
@@ -877,7 +823,7 @@ For every Hermitian matrix $R$ of the form~\eqref{eq:residual-gram},
 \]
 \end{theorem}
 
-\section{Positivity of the geometric polynomial}\label{sec:Ppositive}
+\section{Positivity on the Gram cone}\label{sec:Ppositive}
 
 The proof uses the geometry of the Gram cone in three stages.  On the
 rank-one locus the three residual vectors are collinear and the polynomial
@@ -1012,19 +958,10 @@ For $a>0$ and $\delta\geq0$,
 \begin{equation}\label{eq:detTheta-expansion}
  a^3\Rea\det\Theta=D_0+\delta D_1+\delta^2D_2,
 \end{equation}
-where
-\begin{align}
- D_0&=a^3\lambda_0H_0>0,\nonumber\\
- D_1&=a\bigl((4+11a)(r^2+s^2)+a(20+a)r\nonumber\\
- &\qquad\quad-\sqrt3a(4+3a)s
-          +a(18+10a+3a^2)\bigr)>0,\label{eq:Dcoeffs}\\
- D_2&=a(a+1)(a+2)>0.
-\end{align}
-Here $\lambda_0$ denotes~\eqref{eq:lambda} with
-$b=(r^2+s^2)/a$, and
-\[
- H_0=2\lambda_0-6+4(r^2+s^2)>0.
-\]
+where $D_0,D_1,D_2>0$.  More precisely,
+$D_0=a^3\lambda_0H_0$, where $\lambda_0$ denotes~\eqref{eq:lambda}
+with $b=(r^2+s^2)/a$ and
+$H_0=2\lambda_0-6+4(r^2+s^2)>0$.
 Furthermore
 \begin{equation}\label{eq:N-expansion}
  a^3N=N_0+\delta N_1+\delta^2N_2+\delta^3N_3,
@@ -1033,8 +970,13 @@ with $N_0\geq0$ and $N_1,N_2,N_3>0$.
 \end{lemma}
 
 \begin{proof}
-The determinant identity follows by expanding~\eqref{eq:Theta-matrix} after
-$b=(r^2+s^2+\delta)/a$.  To make all sign checks explicit, put
+Substitution of $b=(r^2+s^2+\delta)/a$ in
+\eqref{eq:Theta-matrix} and~\eqref{eq:Ndef} gives the two polynomial
+expansions.  Their exact coefficients are recorded in
+\ref{app:det-numerator}; here we isolate the geometric content of
+their signs.
+
+Put
 $\rho=(r^2+s^2)^{1/2}$ and $k=\sqrt7-1$.  On the boundary $\delta=0$, the
 two estimates in Lemma~\ref{lem:lambda-positive} give
 \[
@@ -1046,30 +988,12 @@ Consequently
  =6\left(\rho-\frac{k}{3}\right)^2+\frac{2+4\sqrt7}{3}>0.
 \end{equation}
 This proves $D_0>0$.
+The positive residual certificates for $D_1$ and $D_2$ are given in
+\ref{app:det-numerator}.
 
-For $D_1$, set
-\[
- Q=4+11a,\quad L_r=a(20+a),\quad
- L_s=-\sqrt3a(4+3a),\quad C=a(18+10a+3a^2).
-\]
-The identity
-\begin{equation}\label{eq:two-variable-completion}
-\begin{aligned}
- 4Q\bigl(Q(r^2+s^2)+L_rr+L_ss+C\bigr)
-  &=(2Qr+L_r)^2+(2Qs+L_s)^2\\
-  &\quad+4QC-L_r^2-L_s^2.
-\end{aligned}
-\end{equation}
-reduces positivity to the exact residual
-\[
- 4QC-L_r^2-L_s^2
- =4a(72+126a+94a^2+26a^3)>0.
-\]
-Since $a,Q>0$, this proves $D_1>0$; the assertion for $D_2$ is immediate.
-
-Collecting powers of $\delta$ in~\eqref{eq:Ndef} gives
-\eqref{eq:N-expansion}.  To identify its constant coefficient, set
-$\delta=0$.  The first two residual vectors are then collinear.  Define
+It remains conceptually important to identify the constant coefficient in
+\eqref{eq:N-expansion}.  Set $\delta=0$.  The first two residual vectors are
+then collinear.  Define
 \[
  x_0=\sqrt a,\qquad y_0=\frac{g}{\sqrt a},\qquad
  L_0'=x_0\ell_1+y_0\ell_2,
@@ -1102,50 +1026,10 @@ boundary coefficient
 \begin{equation}\label{eq:N0-certificate}
  N_0=a^3\lambda_0(P_0H_0-|L_0'|^2)\geq0.
 \end{equation}
-
-The remaining coefficients are explicit.  First,
-\[
- N_3=(a+2)(a^2+6)>0.
-\]
-Next, collecting the terms in $(r,s)$ gives
-\begin{align*}
- N_2={}&36(r^2+s^2)
- +a(120+84r-36\sqrt3s+36(r^2+s^2))\\
- &+a^2(60+24r-24\sqrt3s+16(r^2+s^2))\\
- &+a^3(16+2(r^2+s^2))+2a^4.
-\end{align*}
-Thus $N_2=Q_2(r^2+s^2)+L_{2r}r+L_{2s}s+C_2$, where
-\begin{align*}
- Q_2&=36+36a+16a^2+2a^3,\\
- L_{2r}&=84a+24a^2,\qquad
- L_{2s}=-\sqrt3(36a+24a^2),\\
- C_2&=120a+60a^2+16a^3+2a^4.
-\end{align*}
-Applying~\eqref{eq:two-variable-completion} gives the strictly positive
-residual
-\[
- 4Q_2C_2-L_{2r}^2-L_{2s}^2
- =16a(a^6+16a^5+112a^4+318a^3+588a^2+936a+1080)>0.
-\]
-Therefore $N_2>0$.
-
-For $N_1$, put $X=r$, $Y=\sqrt3s$ and
-$\nu=X^2+Y^2/3$.  Then
-\begin{equation}\label{eq:N1-B}
- N_1=36\nu^2+aB_1+a^2B_2+a^3B_3+a^4B_4+6a^5,
-\end{equation}
-where
-\begin{align*}
- B_1&=\nu(240+168X-72Y+54\nu),\\
- B_2&=432+624X-240Y+492X^2+108Y^2-168XY\\
-    &\qquad +(156X-84Y)\nu+38\nu^2,\\
- B_3&=168+72X-168Y+54X^2+46Y^2-84XY\\
-    &\qquad +(20X-24Y)\nu+6\nu^2,\\
- B_4&=60+24X-24Y+14\nu.
-\end{align*}
-The exact certificates in~\ref{app:sos} show that
-$B_1\geq0$, $B_2>0$, $B_4>0$, and
-$B_2+aB_3+a^2B_4>0$.  Hence~\eqref{eq:N1-B} is strictly positive.
+The exact human-readable certificates for $N_1,N_2,N_3$ occupy the
+remaining subsections of~\ref{app:sos}.  They
+show respectively that each remaining coefficient is strictly positive,
+without numerical approximation.
 \end{proof}
 
 \begin{proposition}[Positive-definite residual Gram matrices]
@@ -1210,46 +1094,7 @@ matrix remains positive semidefinite, so the already proved case applies.
 Letting $t\downarrow0$ and using continuity proves the result.
 \end{proof}
 
-\subsection{The resulting matrix certificate}
-
-The four-vector inequality has a useful matrix consequence.  We record it
-after the direct proof so that it does not obscure the residual-vector
-argument that establishes it.
-
-\begin{lemma}[Ellipsoid-to-adjugate certificate]\label{lem:ellipsoid}
-Let $B,K\in M_m(\CC)$ with $B\psd$ and $K=K^*$, and let $c\in\RR$.  If
-\[
- \mat{B&q\\q^*&1}\psd\quad\Longrightarrow\quad c+q^*Kq\geq0
-\]
-for every $q\in\CC^m$, then
-\begin{equation}\label{eq:adj-certificate}
- (\det B)K+c\,\adj(B)\psd.
-\end{equation}
-\end{lemma}
-
-\begin{proof}
-If $\det B=0$, the choice $q=0$ gives $c\geq0$ and
-$\adj(B)\psd$, so~\eqref{eq:adj-certificate} follows.  To justify the latter
-fact, if $\operatorname{rank}B\leq m-2$, then $\adj(B)=0$; if
-$\operatorname{rank}B=m-1$, spectral decomposition shows that $\adj(B)$ is
-the product of the positive eigenvalues times the orthogonal projection onto
-$\ker B$.  If $\det B>0$, then
-$B\pd$ and the block condition is $q^*B^{-1}q\leq1$.  Given $y\neq0$, set
-\[
- q=\frac{y}{\sqrt{y^*B^{-1}y}}.
-\]
-The hypothesis, multiplied by $y^*B^{-1}y$, says
-$y^*(K+cB^{-1})y\geq0$.  Hence $K+cB^{-1}\psd$.  Multiplication by
-$\det B>0$ and the identity $\adj(B)=(\det B)B^{-1}$ prove the claim.
-\end{proof}
-
-Applied to~\eqref{eq:c0}--\eqref{eq:K}, Lemma~\ref{lem:ellipsoid} gives the
-positive-semidefinite certificate
-\begin{equation}\label{eq:a4-certificate}
- (\det B(u,v,w))K(u,v,w)+c_0(u,v,w)\adj(B(u,v,w))\psd.
-\end{equation}
-
-\section{Completion of the proof}\label{sec:completion}
+\subsection{Completion of the main theorem}\label{sec:completion}
 
 We now combine the geometric inequality with the finite character
 classification.
@@ -1282,9 +1127,50 @@ Lemma~\ref{lem:scaling} returns from correlation matrices to the full
 positive-semidefinite cone.
 \end{proof}
 
+\section{An adjugate-matrix consequence}\label{sec:matrix-consequence}
+
+The four-vector inequality has a useful matrix consequence.  It is recorded
+after the proof of Theorem~\ref{thm:main} to make clear that it is a
+consequence of the residual-vector argument, not an additional step in it.
+
+\begin{lemma}[Ellipsoid-to-adjugate certificate]\label{lem:ellipsoid}
+Let $B,K\in M_m(\CC)$ with $B\psd$ and $K=K^*$, and let $c\in\RR$.  If
+\[
+ \mat{B&q\\q^*&1}\psd\quad\Longrightarrow\quad c+q^*Kq\geq0
+\]
+for every $q\in\CC^m$, then
+\begin{equation}\label{eq:adj-certificate}
+ (\det B)K+c\,\adj(B)\psd.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+If $\det B=0$, the choice $q=0$ gives $c\geq0$ and
+$\adj(B)\psd$, so~\eqref{eq:adj-certificate} follows.  To justify the latter
+fact, if $\operatorname{rank}B\leq m-2$, then $\adj(B)=0$; if
+$\operatorname{rank}B=m-1$, spectral decomposition shows that $\adj(B)$ is
+the product of the positive eigenvalues times the orthogonal projection onto
+$\ker B$.  If $\det B>0$, then $B\pd$ and the block condition is
+$q^*B^{-1}q\leq1$.  Given $y\neq0$, set
+\[
+ q=\frac{y}{\sqrt{y^*B^{-1}y}}.
+\]
+The hypothesis, multiplied by $y^*B^{-1}y$, says
+$y^*(K+cB^{-1})y\geq0$.  Hence $K+cB^{-1}\psd$.  Multiplication by
+$\det B>0$ and the identity $\adj(B)=(\det B)B^{-1}$ prove the claim.
+\end{proof}
+
+Applied to~\eqref{eq:c0}--\eqref{eq:K}, Lemma~\ref{lem:ellipsoid} gives the
+positive-semidefinite certificate
+\begin{equation}\label{eq:a4-certificate}
+ (\det B(u,v,w))K(u,v,w)+c_0(u,v,w)\adj(B(u,v,w))\psd.
+\end{equation}
+
 \appendix
 
-\section{Character data}\label{app:character-data}
+\section{Complete case data}\label{app:character-data}
+
+\subsection{Character tables}
 
 This appendix records the non-cyclic character data used in the finite
 character reduction.  For $S_4$, use the conjugacy-class ordering
@@ -1327,13 +1213,170 @@ character is $2,-2,0,0,0$ on
 The standard character tables of $C_m$, $C_2^2$, and $S_3$ supply the
 remaining cases listed in Section~\ref{sec:elementary-cases}.
 
-\section{Exact scalar and Gram certificates}\label{app:sos}
+\subsection{Normalized functions and case accounting}
 
-This appendix records the non-obvious polynomial certificates used in
-Lemma~\ref{lem:quadratic-certs}.  They contain no numerical approximation.
-Recall $\nu=X^2+Y^2/3$.
+For the smaller subgroups, listing the permutation monomials gives
+Table~\ref{tab:elementary-character-expansions}.  In the $C_3$ and $S_3$
+rows, $z=ad\bar b$.  In the $V_4^{\rm n}$ row,
+$r=|a|^2|f|^2$, $s=|b|^2|e|^2$, and $t=|c|^2|d|^2$; the four signs are
+the four character sign patterns of $C_2^2$.
 
-\subsection{Direct square completions}
+\begin{table}[htbp]
+\caption{Normalized generalized matrix functions for the smaller subgroup cases.}
+\label{tab:elementary-character-expansions}
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X@{}}
+\toprule
+group & normalized generalized matrix functions\\
+\midrule
+$1$ & $1$\\
+$C_2^{\rm t}$ & $1\pm|a|^2$\\
+$C_2^{\rm d}$ & $1\pm|a|^2|f|^2$\\
+$C_3$ & $1+2\Rea z$,\quad $1-\Rea z\pm\sqrt3\Ima z$\\
+$V_4^{\rm n}$ & $1\pm r\pm s\pm t$ with the four character sign patterns\\
+$V_4^{\rm d}$ & $(1\pm|a|^2)(1\pm|f|^2)$\\
+$S_3$ & $1+|a|^2+|b|^2+|d|^2+2\Rea z$,\\
+& $1-|a|^2-|b|^2-|d|^2+2\Rea z$,\quad $1-\Rea z$\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+For $C_4$, set $r=|b|^2|e|^2$ and $z=adf\bar c$.  The four normalized
+functions are
+\begin{equation}\label{eq:c4-rows}
+ 1+r+2\Rea z,\quad 1-r-2\Ima z,\quad
+ 1+r-2\Rea z,\quad 1-r+2\Ima z.
+\end{equation}
+For $D_8$, set $p=|b|^2$ and $q=|e|^2$.  Its five normalized functions are
+\begin{align}
+ R_+,&\quad
+ (1+p)(1+q)-|af+c\bar d|^2,\nonumber\\
+ &(1-p)(1-q)-|af-c\bar d|^2,\quad
+ R_\wedge,\quad 1-pq.\label{eq:d8-rows}
+\end{align}
+The five $S_4$ functions are displayed in~\eqref{eq:s4-rows}.  For $A_4$,
+the trivial and three-dimensional normalized functions are, respectively,
+\begin{equation}\label{eq:a4-real-rows}
+ 1+D+C,\qquad 1-\frac13D,
+\end{equation}
+while the two non-real functions are the conjugate pair represented by the
+expansion in Lemma~\ref{lem:a4-expansion}.  Thus the numbers of entries are
+\[
+ 1+2+2+3+4+4+4+3+5+4+5=37,
+\]
+with thirty-five covered by Proposition~\ref{prop:elementary-cases} and the
+remaining two by Proposition~\ref{prop:a4-characters}.
+
+\section{Exact algebraic certificates}\label{app:sos}
+
+This appendix records the longer exact expansions and the non-obvious
+polynomial certificates used in the geometric proof.  They contain no
+numerical approximation.
+
+\subsection{Residual-normalization expansion}
+\label{app:normalization-expansion}
+
+With the notation of Section~\ref{sec:normalization} and
+$Q=|q_1q_2q_3|^2$, direct substitution in~\eqref{eq:c0} gives
+\begin{align}
+\frac{c_0(u,v,w)}{Q}={}&
+ (1+n_3)|1+h_{12}|^2+(1+n_2)|1+h_{13}|^2
+ +(1+n_1)|1+h_{23}|^2\nonumber\\
+&+2\Rea\bigl((1-\omega)(1+h_{12})(1+h_{23})
+                   (1+\bar h_{13})\bigr).\label{eq:c0-normalized}
+\end{align}
+For the quadratic part, the diagonal terms and the three upper-triangular
+entries of $K$ give
+\begin{align}
+\frac{q^*Kq}{Q}={}&
+ (1+n_2)(1+n_3)+(1+n_1)(1+n_3)+(1+n_1)(1+n_2)\nonumber\\
+&+2\Rea\Bigl(
+ (1-\omega^2)(1+n_3)(1+h_{12})
+ +(1+h_{13})(1+\bar h_{23})\nonumber\\
+&\qquad +(1+h_{12})(1+h_{23})
+ +(1-\omega)(1+n_2)(1+h_{13})\nonumber\\
+&\qquad +(1-\omega^2)(1+n_1)(1+h_{23})
+ +(1+h_{13})(1+\bar h_{12})\Bigr).
+\label{eq:K-normalized}
+\end{align}
+Collecting these two formulas by degree gives
+\eqref{eq:normalization-identity}.
+
+\subsection{Determinant and numerator coefficients}\label{app:det-numerator}
+
+After $b=(r^2+s^2+\delta)/a$, direct coefficient collection in
+\eqref{eq:Theta-matrix} gives~\eqref{eq:detTheta-expansion} with
+\begin{align}
+ D_0&=a^3\lambda_0H_0,\nonumber\\
+ D_1&=a\bigl((4+11a)(r^2+s^2)+a(20+a)r\nonumber\\
+ &\qquad\quad-\sqrt3a(4+3a)s
+          +a(18+10a+3a^2)\bigr),\label{eq:Dcoeffs}\\
+ D_2&=a(a+1)(a+2).
+\end{align}
+The sign of $D_0$ was proved in the main text.  For $D_1$, set
+\[
+ Q=4+11a,\quad L_r=a(20+a),\quad
+ L_s=-\sqrt3a(4+3a),\quad C=a(18+10a+3a^2).
+\]
+The exact identity
+\begin{equation}\label{eq:two-variable-completion}
+\begin{aligned}
+ 4Q\bigl(Q(r^2+s^2)+L_rr+L_ss+C\bigr)
+  &=(2Qr+L_r)^2+(2Qs+L_s)^2\\
+  &\quad+4QC-L_r^2-L_s^2
+\end{aligned}
+\end{equation}
+reduces positivity to
+\[
+ 4QC-L_r^2-L_s^2
+ =4a(72+126a+94a^2+26a^3)>0.
+\]
+Thus $D_1>0$, and $D_2>0$ is immediate.
+
+Coefficient collection in~\eqref{eq:Ndef} gives~\eqref{eq:N-expansion}.
+The constant coefficient is~\eqref{eq:N0-certificate}.  At the other end,
+\[
+ N_3=(a+2)(a^2+6)>0.
+\]
+For $N_2$, one obtains
+\begin{align*}
+ N_2={}&36(r^2+s^2)
+ +a(120+84r-36\sqrt3s+36(r^2+s^2))\\
+ &+a^2(60+24r-24\sqrt3s+16(r^2+s^2))\\
+ &+a^3(16+2(r^2+s^2))+2a^4.
+\end{align*}
+Thus $N_2=Q_2(r^2+s^2)+L_{2r}r+L_{2s}s+C_2$, where
+\begin{align*}
+ Q_2&=36+36a+16a^2+2a^3,\\
+ L_{2r}&=84a+24a^2,\qquad
+ L_{2s}=-\sqrt3(36a+24a^2),\\
+ C_2&=120a+60a^2+16a^3+2a^4.
+\end{align*}
+Applying~\eqref{eq:two-variable-completion} gives
+\[
+ 4Q_2C_2-L_{2r}^2-L_{2s}^2
+ =16a(a^6+16a^5+112a^4+318a^3+588a^2+936a+1080)>0,
+\]
+and hence $N_2>0$.
+
+For $N_1$, put $X=r$, $Y=\sqrt3s$ and
+$\nu=X^2+Y^2/3$.  Then
+\begin{equation}\label{eq:N1-B}
+ N_1=36\nu^2+aB_1+a^2B_2+a^3B_3+a^4B_4+6a^5,
+\end{equation}
+where
+\begin{align*}
+ B_1&=\nu(240+168X-72Y+54\nu),\\
+ B_2&=432+624X-240Y+492X^2+108Y^2-168XY\\
+    &\qquad +(156X-84Y)\nu+38\nu^2,\\
+ B_3&=168+72X-168Y+54X^2+46Y^2-84XY\\
+    &\qquad +(20X-24Y)\nu+6\nu^2,\\
+ B_4&=60+24X-24Y+14\nu.
+\end{align*}
+The next two subsections prove the required signs.
+
+\subsection{Direct square completions}\label{app:direct-completions}
 
 The coefficient $B_2$ has the exact decomposition
 \begin{align*}
@@ -1356,6 +1399,7 @@ Further elementary completions give
 \]
 
 \subsection{The conditional middle-coefficient certificate}
+\label{app:conditional-certificate}
 
 Set
 \[
@@ -1402,7 +1446,7 @@ shows that the discriminant of the quadratic
 $B_2+aB_3+a^2B_4$ is negative.  Hence that quadratic is positive for every
 $a>0$.  This completes the proof that $N_1>0$.
 
-\section{Formal verification}
+\section{Formal verification}\label{app:formal-verification}
 
 The theorem has been formalized in Lean 4.19.0 with Mathlib 4.19.0.  The
 formal development covers the subgroup and character enumeration, the cycle

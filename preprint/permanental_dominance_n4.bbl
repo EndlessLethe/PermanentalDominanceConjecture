@@ -27,6 +27,12 @@ E.~H. Lieb, Proofs of some conjectures on permanents, Journal of Mathematics
 R.~Merris, The permanental dominance conjecture, in: R.~Grone, F.~Uhlig (Eds.),
   Current Trends in Matrix Theory, North-Holland, New York, 1987, pp. 213--223.
 
+\bibitem{wanless2022}
+I.~M. Wanless, {Lieb}'s permanental dominance conjecture, in: The Physics and
+  Mathematics of Elliott Lieb: The 90th Anniversary, Vol.~2, EMS Press, Berlin,
+  2022, pp. 501--516.
+\newblock \href {https://doi.org/10.4171/90-2/48} {\path{doi:10.4171/90-2/48}}.
+
 \bibitem{merriswatkins1985}
 R.~Merris, W.~Watkins, Inequalities and identities for generalized matrix
   functions, Linear Algebra and its Applications 64 (1985) 223--242.
@@ -75,12 +81,6 @@ F.~Zhang, An update on a few permanent conjectures, Special Matrices 4~(1)
   (2016) 305--316.
 \newblock \href {https://doi.org/10.1515/spma-2016-0030}
   {\path{doi:10.1515/spma-2016-0030}}.
-
-\bibitem{wanless2022}
-I.~M. Wanless, {Lieb}'s permanental dominance conjecture, in: The Physics and
-  Mathematics of Elliott Lieb: The 90th Anniversary, Vol.~2, EMS Press, Berlin,
-  2022, pp. 501--516.
-\newblock \href {https://doi.org/10.4171/90-2/48} {\path{doi:10.4171/90-2/48}}.
 
 \bibitem{rodtes2024}
 K.~Rodtes, Some remarks on permanental dominance conjecture, Advances in

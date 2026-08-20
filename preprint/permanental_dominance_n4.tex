@@ -5,6 +5,7 @@
 \usepackage{microtype}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{booktabs,longtable,array,tabularx}
+\usepackage{float}
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
@@ -72,9 +73,10 @@ we classify the thirty-seven irreducible-character cases arising from the
 eleven conjugacy classes of subgroups of $\Sn_4$.  Thirty-five cases follow
 from principal-minor, moment, and block-contraction inequalities.  The two
 remaining conjugate characters of $A_4$ reduce to a polynomial inequality on
-the cone of $3\times3$ positive-semidefinite Gram matrices.  Boundary
-sum-of-squares, an exact interior Hessian calculation, and rational Gram
-certificates establish its nonnegativity.
+the cone of $3\times3$ positive-semidefinite Gram matrices.  A rank-one
+sum-of-squares identity, an exact positive-definite interior certificate,
+rational Gram certificates, and closure of the Gram cone establish its
+nonnegativity.
 \end{abstract}
 
 \begin{keyword}
@@ -104,6 +106,10 @@ of $H\leq\Sn_n$, the conjectured inequality is
   \qquad (A\psd).
 \]
 Taking $H=\Sn_n$ recovers the usual irreducible-immanant statement.
+This all-subgroup conjecture is distinct from the stronger
+permanent-on-top conjecture, which asserts that the permanent is the largest
+eigenvalue of the Schur power matrix and is known to be false in general
+\cite{wanless2022}.
 
 The conjecture has generated a substantial literature on dominance
 orderings and sufficient analytic mechanisms.  Representative advances
@@ -123,7 +129,8 @@ generalized bosonic bunching probabilities \cite{gellerknill2026}.
 Most of the literature concerns the immanant specialization $H=\Sn_n$.
 That specialization is known in several broad families and, in particular,
 through order thirteen; these results do not by themselves cover characters
-of proper subgroups \cite{zhang2016,wanless2022}.  For order three, Tabata
+of proper subgroups \cite{pate1998,zhang2016,wanless2022}.  For matrix order
+$n=3$, Tabata
 completed the description of the possible positions of normalized
 generalized matrix functions, including the remaining proper-subgroup cases
 \cite{tabata2015}.  In order four, Barrett, Hall, and Loewy characterized the
@@ -139,9 +146,9 @@ class function on $\Sn_4$; in particular, odd conjugation interchanges the
 two non-real characters of $A_4$.  The distinction produces a substantially
 larger finite problem: $\Sn_4$ has five irreducible characters, whereas all
 subgroups of $\Sn_4$ contribute thirty-seven irreducible-character cases.
-To the best of our knowledge, a uniform proof covering every subgroup
-$H\leq\Sn_4$ and every irreducible character of $H$ has not previously been
-recorded.
+The general subgroup conjecture was previously known through matrix order
+$n=3$ \cite{tabata2015,wanless2022}; the present theorem establishes the
+complete $n=4$ case.
 
 This paper proves precisely that all-subgroup statement for every
 $4\times4$ Hermitian positive-semidefinite matrix.  The proof has three main
@@ -291,30 +298,36 @@ $\Sn_4$.
 Here the superscripts ${\rm t},{\rm d},{\rm n}$ denote transposition,
 double transposition, and normal, respectively; in the dihedral row,
 $r=(1234)$ and $s=(13)$.
-\begin{table}[htbp]
-\caption{Conjugacy classes of subgroups of $S_4$ and their irreducible-character counts.}
+The case column in Table~\ref{tab:s4-subgroups} sums to
+\[
+ 1+2+2+3+4+4+4+3+5+4+5=37.
+\]
+Proposition~\ref{prop:elementary-cases} resolves thirty-five cases, and
+Proposition~\ref{prop:a4-characters} resolves the two non-real $A_4$ cases.
+\begin{table}[H]
+\caption{Complete ledger of the irreducible-character cases for subgroups of $S_4$.}
 \label{tab:s4-subgroups}
 \centering
-\small
-\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xlrr@{}}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xlrr>{\raggedright\arraybackslash}X@{}}
 \toprule
-type & representative & group & $|H|$ & $|\operatorname{Irr}(H)|$\\
+type & representative & group & $|H|$ & cases & resolution\\
 \midrule
-$1$ & $\{1\}$ & $1$ & 1&1\\
-$C_2^{\rm t}$ & $\langle(12)\rangle$ & $C_2$ &2&2\\
-$C_2^{\rm d}$ & $\langle(12)(34)\rangle$ & $C_2$ &2&2\\
-$C_3$ & $\langle(123)\rangle$ & $C_3$ &3&3\\
-$C_4$ & $\langle(1234)\rangle$ & $C_4$ &4&4\\
-$V_4^{\rm n}$ & $\{1,(12)(34),(13)(24),(14)(23)\}$ & $C_2^2$ &4&4\\
-$V_4^{\rm d}$ & $\langle(12),(34)\rangle$ & $C_2^2$ &4&4\\
-$S_3$ & $\operatorname{Stab}(4)$ & $S_3$ &6&3\\
-$D_8$ & $\langle r,s\rangle$ & $D_8$ &8&5\\
-$A_4$ & $A_4$ & $A_4$ &12&4\\
-$S_4$ & $S_4$ & $S_4$ &24&5\\
+$1$ & $\{1\}$ & $1$ & 1&1& Proposition~\ref{prop:elementary-cases}\\
+$C_2^{\rm t}$ & $\langle(12)\rangle$ & $C_2$ &2&2& Proposition~\ref{prop:elementary-cases}\\
+$C_2^{\rm d}$ & $\langle(12)(34)\rangle$ & $C_2$ &2&2& Proposition~\ref{prop:elementary-cases}\\
+$C_3$ & $\langle(123)\rangle$ & $C_3$ &3&3& Proposition~\ref{prop:elementary-cases}\\
+$C_4$ & $\langle(1234)\rangle$ & $C_4$ &4&4& Proposition~\ref{prop:elementary-cases}\\
+$V_4^{\rm n}$ & $\{1,(12)(34),$\linebreak
+$(13)(24),(14)(23)\}$ & $C_2^2$ &4&4& Proposition~\ref{prop:elementary-cases}\\
+$V_4^{\rm d}$ & $\langle(12),(34)\rangle$ & $C_2^2$ &4&4& Proposition~\ref{prop:elementary-cases}\\
+$S_3$ & $\operatorname{Stab}(4)$ & $S_3$ &6&3& Proposition~\ref{prop:elementary-cases}\\
+$D_8$ & $\langle r,s\rangle$ & $D_8$ &8&5& Proposition~\ref{prop:elementary-cases}\\
+$A_4$ & $A_4$ & $A_4$ &12&4& Proposition~\ref{prop:elementary-cases} (2); Proposition~\ref{prop:a4-characters} (2)\\
+$S_4$ & $S_4$ & $S_4$ &24&5& Proposition~\ref{prop:elementary-cases}\\
 \bottomrule
 \end{tabularx}
 \end{table}
-The final column of Table~\ref{tab:s4-subgroups} sums to $37$.
 
 \begin{lemma}[Subgroup classification]\label{lem:subgroup-classification}
 Every subgroup of $\Sn_4$ is conjugate to exactly one of the eleven types in
@@ -521,14 +534,14 @@ Put $r=(1-|b|^2)^{1/2}$ and
  y_0=a+\bar d b,\qquad y_1=\bar d r,\qquad
  g_0=c+fb,\quad g_1=fr.
 \]
-If $Y=|y_0|^2+|y_1|^2$, $G=|g_0|^2+|g_1|^2$, and
+If $Y=|y_0|^2+|y_1|^2$, $Z=|g_0|^2+|g_1|^2$, and
 $h=\bar y_0g_0+\bar y_1g_1$, expanding the definitions gives the certificate
 \begin{equation}\label{eq:Rplus-gap}
- \per A-R_+=Y+G+2\Rea(\bar e h).
+ \per A-R_+=Y+Z+2\Rea(\bar e h).
 \end{equation}
 Cauchy--Schwarz and $|e|\leq1$ imply
-$|\Rea(\bar e h)|^2\leq YG$.  Since
-$Y+G\geq2\sqrt{YG}\geq2|\Rea(\bar e h)|$, the right-hand side
+$|\Rea(\bar e h)|^2\leq YZ$.  Since
+$Y+Z\geq2\sqrt{YZ}\geq2|\Rea(\bar e h)|$, the right-hand side
 of~\eqref{eq:Rplus-gap} is nonnegative.  This proves the first contraction.
 
 For the exterior contraction, take Gram vectors $x_1,\ldots,x_4$ for $A$.
@@ -571,7 +584,7 @@ The following proposition records the finite analytic part of the proof.
 Table~\ref{tab:elementary-character-expansions} makes clear that the only
 cases not covered are the two non-real $A_4$ characters.
 
-\begin{proposition}[The thirty-five elementary character cases]\label{prop:elementary-cases}
+\begin{proposition}[The thirty-five cases resolved by general inequalities]\label{prop:elementary-cases}
 For every representative subgroup in Lemma~\ref{lem:subgroup-classification},
 all normalized generalized matrix functions other than those associated with
 $\chi_\omega$ and
@@ -606,7 +619,7 @@ $V_4^{\rm d}$, all four values are no larger than
 $(1+|a|^2)(1+|f|^2)\leq\per A$.
 
 \begin{table}[htbp]
-\caption{Normalized generalized matrix functions for the elementary subgroup cases.}
+\caption{Normalized generalized matrix functions for the smaller subgroup cases.}
 \label{tab:elementary-character-expansions}
 \centering
 \small
@@ -683,7 +696,8 @@ $[211]$ cases.  This proves the proposition.
 \subsection{The exceptional character gap}
 
 It remains to treat the two conjugate non-real characters of $A_4$.  Their
-common geometric content is isolated below.
+common geometric content is isolated below through their
+permanental-dominance gap.
 
 Let
 \begin{equation}\label{eq:Buvw}
@@ -717,7 +731,7 @@ relabeling of the four indices.
 
 \begin{proof}
 Choose the labeling of $C_+$ so that $\chi_\omega(C_+)=\omega$.  Listing the
-twelve elements gives the independently checkable expansion
+twelve elements gives the expansion
 \begin{align*}
 d_{\chi_\omega}^{A_4}(A)
 ={}&1+|a|^2|f|^2+|b|^2|e|^2+|c|^2|d|^2\\
@@ -818,7 +832,7 @@ Equations~\eqref{eq:residual-coordinates} give
  w=q_2\bar q_3(1+h_{23}),
 \]
 and $|q_i|^2(1+n_i)=1$.  Let $Q=|q_1q_2q_3|^2$.  Dividing first by $Q$
-makes every cancellation visible.  Direct substitution in~\eqref{eq:c0}
+organizes the cancellations by degree.  Direct substitution in~\eqref{eq:c0}
 gives
 \begin{align}
 \frac{c_0(u,v,w)}{Q}={}&
@@ -869,10 +883,10 @@ The proof uses the geometry of the Gram cone in three stages.  On the
 rank-one locus the three residual vectors are collinear and the polynomial
 has a direct sum-of-squares form.  In the positive-definite region, two
 residual vectors are used as coordinates and the third is minimized through
-an explicit two-dimensional Hermitian Hessian.  Finally, every singular Gram
-matrix is obtained as a limit of positive-definite ones.  The rank-one
-calculation is also the algebraic base coefficient in the interior minimum
-certificate, so it is both explanatory and logically active.
+an explicit two-dimensional Hermitian quadratic form.  Finally, every
+singular Gram matrix is obtained as a limit of positive-definite ones.  The
+rank-one calculation is also the algebraic base coefficient in the interior
+minimum certificate, so it is both explanatory and logically active.
 
 \subsection{The rank-one boundary}
 
@@ -910,9 +924,10 @@ and the exact discriminant identity
 \[
  C_0K_0-|L_0|^2=4(1+\Rea(\bar xy))^2\geq0.
 \]
-Completing the square proves $R_0\geq0$.  A second direct expansion using
-$1+\omega+\omega^2=0$ gives the equality in~\eqref{eq:P-rank-one}; its
-right-hand side is nonnegative.
+If $K_0>0$, completing the square proves $R_0\geq0$.  If $K_0=0$, the
+discriminant identity forces $L_0=0$, and then $R_0=C_0>0$.  A second direct
+expansion using $1+\omega+\omega^2=0$ gives the equality
+in~\eqref{eq:P-rank-one}; its right-hand side is nonnegative.
 \end{proof}
 
 \subsection{The positive-definite region}
@@ -943,7 +958,7 @@ Set
  M={}&\mat{
  1+b&2-\omega+(1-\omega)g\\
  2-\omega^2+(1-\omega^2)\bar g&1+a},\label{eq:M}\\
- T={}&\lambda I_2+MG.\label{eq:Tmatrix}
+ \Theta={}&\lambda I_2+MG.\label{eq:Theta-matrix}
 \end{align}
 
 \begin{lemma}[Quadratic decomposition]\label{lem:quadratic-decomposition}
@@ -955,16 +970,16 @@ With the preceding notation,
 \end{align}
 where
 \begin{equation}\label{eq:Qzeta}
- Q(\zeta)=P_0+2\Rea((G\ell)^*\zeta)+\zeta^*(GT)\zeta.
+ Q(\zeta)=P_0+2\Rea((G\ell)^*\zeta)+\zeta^*(G\Theta)\zeta.
 \end{equation}
-Moreover $GT$ is Hermitian.
+Moreover $G\Theta$ is Hermitian.
 \end{lemma}
 
 \begin{proof}
 Substitution of~\eqref{eq:G-data} in~\eqref{eq:geometric-P} gives the first
 identity.  Replacing $h$ by $G\zeta$, using $G=G^*$ and
-$T=\lambda I+MG$, gives the second.  Finally
-$GT=\lambda G+GMG$ is Hermitian because $G$ and $M$ are Hermitian.
+$\Theta=\lambda I+MG$, gives the second.  Finally
+$G\Theta=\lambda G+GMG$ is Hermitian because $G$ and $M$ are Hermitian.
 \end{proof}
 
 \begin{lemma}[Positivity of the scalar part]\label{lem:lambda-positive}
@@ -984,13 +999,18 @@ Consequently
 
 The remaining algebra is organized by the Gram defect $\delta$.  Define
 \begin{equation}\label{eq:Ndef}
- N=\Rea\left(P_0\det T-\ell^*G\adj(T)\ell\right).
+ N=\Rea\left(P_0\det\Theta-\ell^*G\adj(\Theta)\ell\right).
 \end{equation}
+After the substitution $b=(r^2+s^2+\delta)/a$, multiplication by $a^3$
+clears the denominators in $\Rea\det\Theta$ and $N$.  Their coefficient
+expansions are therefore polynomial identities in
+$\mathbb Q(\sqrt3)[a,r,s,\delta]$.  The representation of $N_0$ below
+temporarily introduces square roots only to expose its sign.
 
-\begin{lemma}[Hessian and minimum certificates]\label{lem:hessian-certs}
+\begin{lemma}[Quadratic-form and minimum certificates]\label{lem:quadratic-certs}
 For $a>0$ and $\delta\geq0$,
-\begin{equation}\label{eq:detT-expansion}
- a^3\Rea\det T=D_0+\delta D_1+\delta^2D_2,
+\begin{equation}\label{eq:detTheta-expansion}
+ a^3\Rea\det\Theta=D_0+\delta D_1+\delta^2D_2,
 \end{equation}
 where
 \begin{align}
@@ -1013,7 +1033,7 @@ with $N_0\geq0$ and $N_1,N_2,N_3>0$.
 \end{lemma}
 
 \begin{proof}
-The determinant identity follows by expanding~\eqref{eq:Tmatrix} after
+The determinant identity follows by expanding~\eqref{eq:Theta-matrix} after
 $b=(r^2+s^2+\delta)/a$.  To make all sign checks explicit, put
 $\rho=(r^2+s^2)^{1/2}$ and $k=\sqrt7-1$.  On the boundary $\delta=0$, the
 two estimates in Lemma~\ref{lem:lambda-positive} give
@@ -1047,19 +1067,38 @@ reduces positivity to the exact residual
 \]
 Since $a,Q>0$, this proves $D_1>0$; the assertion for $D_2$ is immediate.
 
-The expansion~\eqref{eq:N-expansion} is obtained in the same way from
-\eqref{eq:Ndef}.  On the boundary $\delta=0$, the first two residual vectors
-are collinear.  Define
+Collecting powers of $\delta$ in~\eqref{eq:Ndef} gives
+\eqref{eq:N-expansion}.  To identify its constant coefficient, set
+$\delta=0$.  The first two residual vectors are then collinear.  Define
 \[
  x_0=\sqrt a,\qquad y_0=\frac{g}{\sqrt a},\qquad
  L_0'=x_0\ell_1+y_0\ell_2,
 \]
 where $\ell_1,\ell_2$ are the components of~\eqref{eq:ell}, evaluated at
 $b=(r^2+s^2)/a$.  Then $|x_0|^2=a$, $|y_0|^2=b$, and
-$\bar x_0y_0=g$.  Lemma~\ref{lem:rank-one-sos}, viewed as a quadratic in the
-third scalar coordinate, gives
-$|L_0'|^2\leq P_0H_0$.  Direct substitution in~\eqref{eq:Ndef} now yields
-the exact boundary coefficient
+$\bar x_0y_0=g$.  For $z\in\CC$, let
+\[
+ R_{\mathrm{rk1}}(z)=
+ \mat{
+  a&g&\bar x_0z\\
+  \bar g&b&\bar y_0z\\
+  x_0\bar z&y_0\bar z&|z|^2
+ }.
+\]
+This is the rank-one Gram matrix generated by $(x_0,y_0,z)$.  Substitution
+in~\eqref{eq:P-quadratic} gives the exact scalar quadratic
+\begin{equation}\label{eq:rank-one-N0-bridge}
+ \mathcal P(R_{\mathrm{rk1}}(z))
+ =P_0+2\Rea(\overline{L_0'}z)+H_0|z|^2.
+\end{equation}
+Indeed, the linear term is
+$\ell^*\mat{\bar x_0z&\bar y_0z}^T=\overline{L_0'}z$, and the coefficient
+of $|z|^2$ is $H_0=2\lambda_0-6+4(r^2+s^2)$.  By
+Lemma~\ref{lem:rank-one-sos}, the left-hand side of
+\eqref{eq:rank-one-N0-bridge} is nonnegative for every $z\in\CC$.
+Since $H_0>0$, minimizing the right-hand side gives
+$|L_0'|^2\leq P_0H_0$.  Substitution in~\eqref{eq:Ndef} now yields the exact
+boundary coefficient
 \begin{equation}\label{eq:N0-certificate}
  N_0=a^3\lambda_0(P_0H_0-|L_0'|^2)\geq0.
 \end{equation}
@@ -1114,30 +1153,31 @@ If $R\pd$, then $\mathcal P(R)>0$.
 \end{proposition}
 
 \begin{proof}
-Equations~\eqref{eq:detT-expansion} and~\eqref{eq:Dcoeffs} show
-$\Rea\det T>0$.  Direct multiplication gives the exact leading-entry
+Equations~\eqref{eq:detTheta-expansion} and~\eqref{eq:Dcoeffs} show
+$\Rea\det\Theta>0$.  Direct multiplication gives the exact leading-entry
 identity
-\begin{equation}\label{eq:GT-leading}
- (GT)_{11}=aH_0+\delta(a+1)>0.
+\begin{equation}\label{eq:GTheta-leading}
+ (G\Theta)_{11}=aH_0+\delta(a+1)>0.
 \end{equation}
 Moreover
 \[
- \det(GT)=\det G\det T=\delta\det T.
+ \det(G\Theta)=\det G\det\Theta=\delta\det\Theta.
 \]
-Because $GT$ is Hermitian, its determinant is real; since $\delta>0$, this
-also proves $\det T=\Rea\det T$.  Hence
-$\det(GT)=\delta\Rea\det T>0$.  The two leading principal minors are
-positive, so the $2\times2$ Hermitian matrix $GT$ is positive definite.
+Because $G\Theta$ is Hermitian, its determinant is real; since $\delta>0$,
+this also proves $\det\Theta=\Rea\det\Theta$.  Hence
+$\det(G\Theta)=\delta\Rea\det\Theta>0$.  The two leading principal minors
+are positive, so the $2\times2$ Hermitian matrix $G\Theta$ is positive
+definite.
 
 The critical-point equation for~\eqref{eq:Qzeta} is
-$GT\zeta=-G\ell$.  Since $G$ is invertible, it is equivalent to
-$T\zeta=-\ell$, and therefore
+$G\Theta\zeta=-G\ell$.  Since $G$ is invertible, it is equivalent to
+$\Theta\zeta=-\ell$, and therefore
 \[
- \zeta_0=-\frac{\adj(T)\ell}{\Rea\det T},
+ \zeta_0=-\frac{\adj(\Theta)\ell}{\Rea\det\Theta},
 \]
 and completing the Hermitian square gives
 \[
- \min_\zeta Q(\zeta)=\frac{N}{\Rea\det T}.
+ \min_\zeta Q(\zeta)=\frac{N}{\Rea\det\Theta}.
 \]
 By~\eqref{eq:N-expansion}, $N>0$ when $\delta>0$.  Therefore
 $Q(\zeta)>0$ for all $\zeta$.  Lemma~\ref{lem:lambda-positive} and the Schur
@@ -1189,7 +1229,11 @@ for every $q\in\CC^m$, then
 
 \begin{proof}
 If $\det B=0$, the choice $q=0$ gives $c\geq0$ and
-$\adj(B)\psd$, so~\eqref{eq:adj-certificate} follows.  If $\det B>0$, then
+$\adj(B)\psd$, so~\eqref{eq:adj-certificate} follows.  To justify the latter
+fact, if $\operatorname{rank}B\leq m-2$, then $\adj(B)=0$; if
+$\operatorname{rank}B=m-1$, spectral decomposition shows that $\adj(B)$ is
+the product of the positive eigenvalues times the orthogonal projection onto
+$\ker B$.  If $\det B>0$, then
 $B\pd$ and the block condition is $q^*B^{-1}q\leq1$.  Given $y\neq0$, set
 \[
  q=\frac{y}{\sqrt{y^*B^{-1}y}}.
@@ -1286,7 +1330,7 @@ remaining cases listed in Section~\ref{sec:elementary-cases}.
 \section{Exact scalar and Gram certificates}\label{app:sos}
 
 This appendix records the non-obvious polynomial certificates used in
-Lemma~\ref{lem:hessian-certs}.  They contain no numerical approximation.
+Lemma~\ref{lem:quadratic-certs}.  They contain no numerical approximation.
 Recall $\nu=X^2+Y^2/3$.
 
 \subsection{Direct square completions}
@@ -1361,24 +1405,28 @@ $a>0$.  This completes the proof that $N_1>0$.
 \section{Formal verification}
 
 The theorem has been formalized in Lean 4.19.0 with Mathlib 4.19.0.  The
-formal development verifies the subgroup and character enumeration, all
-cycle expansions, the residual normalization identity, the rational Gram
-certificate, and the final passage from correlation matrices to the full
+formal development covers the subgroup and character enumeration, the cycle
+expansions, the residual normalization identity, the rational Gram
+certificate, and the passage from correlation matrices to the full
 positive-semidefinite cone.  The public theorem is
 \texttt{normalized\_permanental\_dominance\_n4} in the module
 \texttt{PermanentalDominance.N4.}\allowbreak
 \texttt{NormalizedPermanentalDominance}.
-A detailed module map and an axiom audit are included with the source.  The
-formalization is supplementary: the
-identities and sign certificates needed for the mathematical proof have been
-displayed above rather than delegated to the proof assistant.
-
-OpenAI ChatGPT and Codex were used as AI-assisted tools during mathematical
-exploration and the development of portions of the Lean formalization.  The
-generated suggestions and code were not treated as mathematical evidence:
-the stated results were checked by Lean and Mathlib, the imported dependency
-closure was subjected to the accompanying axiom audit, and the author
-reviewed the final formal and manuscript content.
+A detailed module map and an axiom audit are included with the source.  For
+the core coefficient extraction, the module
+\path{A4GeometricHessian} contains the theorems
+\path{hessianDeterminant_expansion},
+\path{minimumNumerator_expansion}, and
+\path{collinearNumerator_scaled_identity},
+corresponding respectively
+to~\eqref{eq:detTheta-expansion}, \eqref{eq:N-expansion}, and
+\eqref{eq:N0-certificate}.  The matrix denoted by $\Theta$ here is named
+\texttt{T} in that module.  The rank-one identity and the exact interior
+minimum are theorems \path{geometricP_collinear_identity} and
+\path{minimumPoint_value}, respectively.  They are located in the modules
+\path{A4GeometricRankOne} and \path{A4GeometricMinimum}.  These references
+locate the machine-checked counterparts; the identities and sign
+certificates used by the mathematical proof remain displayed above.
 
 The formal source used here was extracted from the immutable merge commit
 \href{https://github.com/EndlessLethe/math/commit/c5e4d8c61f08d05ffe7c28bfa1ea732d8827b485}
@@ -1397,20 +1445,17 @@ public, commercial, or not-for-profit sectors.
 No external data were used in this study.  The accompanying Lean
 formalization is available from the
 \href{https://github.com/EndlessLethe/PermanentalDominanceConjecture}
-{companion repository}, and the LAA manuscript source is available from its
-\href{https://github.com/EndlessLethe/PermanentalDominanceConjecture/tree/codex/laa-preprint/preprint}
-{submission branch}.  The immutable formalization provenance is the commit
-identified in the preceding section.
+{companion repository}, together with the manuscript source.  The immutable
+formalization provenance is the commit identified in the preceding section.
 
 \section*{Declaration of generative AI and AI-assisted technologies in the
 manuscript preparation process}
 During the preparation of this work, the author used OpenAI ChatGPT and Codex
 to assist with mathematical exploration, development of the Lean
 formalization, literature organization, manuscript drafting, language
-editing, and LaTeX preparation.  The research-method use is described in the
-formal-verification section above.  The author reviewed and edited all
-generated content and takes full responsibility for the accuracy and
-integrity of the work.
+editing, and LaTeX preparation.  The author reviewed and edited all generated
+content and takes full responsibility for the accuracy and integrity of the
+work.
 
 \bibliographystyle{elsarticle-num}
 \bibliography{references}

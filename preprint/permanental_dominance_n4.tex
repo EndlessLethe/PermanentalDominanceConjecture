@@ -382,35 +382,35 @@ cases associated with the eleven fixed representatives.
 
 For~\eqref{eq:corr-six} define
 \begin{align}
- \mathsf T={}&|a|^2+|b|^2+|c|^2+|d|^2+|e|^2+|f|^2,\label{eq:T}\\
- \mathsf D={}&|a|^2|f|^2+|b|^2|e|^2+|c|^2|d|^2,\label{eq:D}\\
- \mathsf C={}&2\Rea(a d\bar b+a e\bar c+b f\bar c+d f\bar e),\label{eq:C}\\
- \mathsf F={}&2\Rea(a d f\bar c+a e\bar f\bar b+b\bar d e\bar c).
+ T={}&|a|^2+|b|^2+|c|^2+|d|^2+|e|^2+|f|^2,\label{eq:T}\\
+ D={}&|a|^2|f|^2+|b|^2|e|^2+|c|^2|d|^2,\label{eq:D}\\
+ C={}&2\Rea(a d\bar b+a e\bar c+b f\bar c+d f\bar e),\label{eq:C}\\
+ F={}&2\Rea(a d f\bar c+a e\bar f\bar b+b\bar d e\bar c).
  \label{eq:F}
 \end{align}
 Enumerating the cycle types of $\Sn_4$ gives
 \begin{equation}\label{eq:per-aggregate}
- \per A=1+\mathsf T+\mathsf D+\mathsf C+\mathsf F.
+ \per A=1+T+D+C+F.
 \end{equation}
 The five normalized $S_4$ generalized matrix functions, in the order of
 the characters in~\eqref{eq:s4-table}, are
 \begin{align}
- p_{[4]}&=1+\mathsf T+\mathsf D+\mathsf C+\mathsf F,\nonumber\\
- p_{[1^4]}&=1-\mathsf T+\mathsf D+\mathsf C-\mathsf F,\nonumber\\
- p_{[31]}&=1+\tfrac13\mathsf T-\tfrac13\mathsf D-\tfrac13\mathsf F,\label{eq:s4-rows}\\
- p_{[211]}&=1-\tfrac13\mathsf T-\tfrac13\mathsf D+\tfrac13\mathsf F,\nonumber\\
- p_{[22]}&=1+\mathsf D-\tfrac12\mathsf C.\nonumber
+ p_{[4]}&=1+T+D+C+F,\nonumber\\
+ p_{[1^4]}&=1-T+D+C-F,\nonumber\\
+ p_{[31]}&=1+\tfrac13T-\tfrac13D-\tfrac13F,\label{eq:s4-rows}\\
+ p_{[211]}&=1-\tfrac13T-\tfrac13D+\tfrac13F,\nonumber\\
+ p_{[22]}&=1+D-\tfrac12C.\nonumber
 \end{align}
 
 \begin{lemma}[Scalar correlation inequalities]\label{lem:scalar-toolbox}
 If $A$ is the correlation matrix in~\eqref{eq:corr-six}, then
 \begin{gather}
- 0\leq\mathsf T,\quad 0\leq\mathsf D,\quad
- \mathsf D\leq\frac{\mathsf T^2}{4},\quad
- -2\mathsf D\leq\mathsf F\leq2\mathsf D\leq\mathsf T,
+ 0\leq T,\quad 0\leq D,\quad
+ D\leq\frac{T^2}{4},\quad
+ -2D\leq F\leq2D\leq T,
  \label{eq:scalar-basic}\\
- \frac{\mathsf T^2}{2}\leq\mathsf T+\frac32\mathsf C,
- \qquad 1+\mathsf D\leq\per A.\label{eq:moment-bound}
+ \frac{T^2}{2}\leq T+\frac32C,
+ \qquad 1+D\leq\per A.\label{eq:moment-bound}
 \end{gather}
 In addition, if
 \begin{equation}\label{eq:triangle-data}
@@ -434,8 +434,8 @@ For the moment inequality, let $\lambda_1,\dots,\lambda_4\geq0$ be the
 eigenvalues of $A$.  Direct trace expansion gives
 \[
  \sum\lambda_i=4,\quad
- \sum\lambda_i^2=4+2\mathsf T,\quad
- \sum\lambda_i^3=4+6\mathsf T+3\mathsf C.
+ \sum\lambda_i^2=4+2T,\quad
+ \sum\lambda_i^3=4+6T+3C.
 \]
 The exact identity
 \[
@@ -444,16 +444,16 @@ The exact identity
  =\sum_{i<j}\lambda_i\lambda_j(\lambda_i-\lambda_j)^2
 \]
 implies the first inequality in~\eqref{eq:moment-bound}.  It also gives
-$\mathsf C\geq(\mathsf T^2-2\mathsf T)/3$.  To prove the second inequality,
-subtract $1+\mathsf D$ from~\eqref{eq:per-aggregate}.  If
-$\mathsf T\leq2$, then
+$C\geq(T^2-2T)/3$.  To prove the second inequality,
+subtract $1+D$ from~\eqref{eq:per-aggregate}.  If
+$T\leq2$, then
 \[
- \mathsf T+\mathsf C+\mathsf F
- \geq \mathsf T+\frac{\mathsf T^2-2\mathsf T}{3}-2\mathsf D
- \geq \frac{\mathsf T(2-\mathsf T)}6\geq0.
+ T+C+F
+ \geq T+\frac{T^2-2T}{3}-2D
+ \geq \frac{T(2-T)}6\geq0.
 \]
-If $\mathsf T\geq2$, the moment bound gives $\mathsf C\geq0$, while
-$2\mathsf D\leq\mathsf T$ and $\mathsf F\geq-2\mathsf D$ give the same
+If $T\geq2$, the moment bound gives $C\geq0$, while
+$2D\leq T$ and $F\geq-2D$ give the same
 conclusion.  In particular, $1\leq\per A$.
 
 We next prove~\eqref{eq:triangle-character-bounds}.  Put
@@ -498,7 +498,7 @@ relabeling proves the other three cases.
 
 We also need two symmetric $2+2$ contractions.  Put
 \begin{align}
- R_+&:=1+|b|^2+|e|^2+\mathsf D
+ R_+&:=1+|b|^2+|e|^2+D
        +2\Rea(a d f\bar c),\label{eq:Rplus}\\
  R_\wedge&:=(1-|b|^2)(1-|e|^2)+|af-c\bar d|^2.\label{eq:Rwedge}
 \end{align}
@@ -601,7 +601,7 @@ The trivial and $C_2^{\rm t}$ cases are bounded by $P_3$ (or by $1$ after
 choosing the negative sign).  For $C_2^{\rm d}$, the positive value is at
 most $1+|a|^2|f|^2+|c|^2|d|^2\leq\per A$, while the negative value is at
 most one.  For $V_4^{\rm n}$, the all-positive value is
-$1+\mathsf D\leq\per A$ and each other sign pattern is no larger.  For
+$1+D\leq\per A$ and each other sign pattern is no larger.  For
 $V_4^{\rm d}$, all four values are no larger than
 $(1+|a|^2)(1+|f|^2)\leq\per A$.
 
@@ -642,7 +642,7 @@ Put $x=|a|^2|f|^2$ and $y=|c|^2|d|^2$.  The estimates
  \leq x+y
 \]
 show that the two values containing $+r$ are at most
-$1+r+x+y=1+\mathsf D\leq\per A$.  The other two are at most
+$1+r+x+y=1+D\leq\per A$.  The other two are at most
 $1-r+x+y\leq1+x+y\leq\per A$ by~\eqref{eq:block-bounds}.
 
 For $D_8$, write $p=|b|^2$, $q=|e|^2$.  The five normalized functions are
@@ -658,19 +658,19 @@ $+|af+c\bar d|^2$ with $-|af+c\bar d|^2$, and hence is no larger.  The third
 and fifth are at most $1$, hence at most $\per A$.
 
 For $S_4$, the sign case follows from
-$\mathsf T+\mathsf F\geq\mathsf T-2\mathsf D\geq0$.  For the two remaining
+$T+F\geq T-2D\geq0$.  For the two remaining
 nontrivial estimates, direct subtraction gives
 \begin{align*}
  3(\per A-p_{[31]})
-   &=2\mathsf T+4\mathsf D+3\mathsf C+4\mathsf F
-     \geq\mathsf T^2-4\mathsf D\geq0,\\
+   &=2T+4D+3C+4F
+     \geq T^2-4D\geq0,\\
  2(\per A-p_{[22]})
-   &=2\mathsf T+3\mathsf C+2\mathsf F
-     \geq\mathsf T^2-4\mathsf D\geq0.
+   &=2T+3C+2F
+     \geq T^2-4D\geq0.
 \end{align*}
 Here we used~\eqref{eq:scalar-basic}--\eqref{eq:moment-bound}.  Finally,
 $p_{[211]}\leq1\leq\per A$ because
-$\mathsf F\leq\mathsf T$ and $\mathsf D\geq0$.
+$F\leq T$ and $D\geq0$.
 
 Finally, the trivial $A_4$ case is the average of the trivial and sign $S_4$
 cases, while its three-dimensional case is the average of the $[31]$ and

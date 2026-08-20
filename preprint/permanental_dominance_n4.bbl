@@ -40,9 +40,9 @@ P.~Heyfron, Immanant dominance orderings for hook partitions, Linear and
 \bibitem{pate1991}
 T.~H. Pate, Partitions, irreducible characters, and inequalities for
   generalized matrix functions, Transactions of the American Mathematical
-  Society 325~(2) (1991) 875--894.
-\newblock \href {https://doi.org/10.1090/S0002-9947-1991-0998356-3}
-  {\path{doi:10.1090/S0002-9947-1991-0998356-3}}.
+  Society 325~(2) (1991) 875--894,
+  \href{https://doi.org/10.1090/S0002-9947-1991-0998356-3}{\texttt{doi:10.1090/S0002-9947-1991-\allowbreak
+  0998356-3}}.
 
 \bibitem{pate1998}
 T.~H. Pate, Row appending maps, {$\Psi$}-functions, and immanant inequalities

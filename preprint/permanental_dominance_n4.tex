@@ -341,7 +341,7 @@ Klein-four types, by cycle type.
 \end{proof}
 
 The character data used below are recorded in
-Appendix~\ref{app:character-data}.  Orthogonality of the character-table rows
+\ref{app:character-data}.  Orthogonality of the character-table rows
 and the identity $\sum_\chi\chi(1)^2=|H|$ prove that no irreducible character
 is missing.  For the two exceptional $A_4$ characters we fix
 \begin{equation}\label{eq:omega}
@@ -350,6 +350,8 @@ is missing.  For the two exceptional $A_4$ characters we fix
 \end{equation}
 
 \subsection{Conjugation invariance}
+
+Simultaneous relabeling transports both the subgroup and its character data.
 
 \begin{lemma}[Transport]\label{lem:transport}
 Let $g\in\Sn_4$, $K=g^{-1}Hg$, and let
@@ -401,7 +403,7 @@ the characters in~\eqref{eq:s4-table}, are
 \end{align}
 
 \begin{lemma}[Scalar correlation inequalities]\label{lem:scalar-toolbox}
-If $A$ in~\eqref{eq:corr-six} is positive semidefinite, then
+If $A$ is the correlation matrix in~\eqref{eq:corr-six}, then
 \begin{gather}
  0\leq\mathsf T,\quad 0\leq\mathsf D,\quad
  \mathsf D\leq\frac{\mathsf T^2}{4},\quad
@@ -477,8 +479,8 @@ It remains to prove the principal-permanent contraction.  Choose Gram
 vectors $x_1,\ldots,x_4$ for $A$, write
 $x\odot y=x\otimes y+y\otimes x$, and set
 \[
- y_1=x_2\odot x_3,\qquad y_2=x_1\odot x_3,
- \qquad y_3=x_1\odot x_2,qquad
+ y_1=x_2\odot x_3,\qquad y_2=x_1\odot x_3,\qquad
+ y_3=x_1\odot x_2,\qquad
  v=\bar c y_1+\bar e y_2+\bar f y_3.
 \]
 The identity
@@ -502,7 +504,7 @@ We also need two symmetric $2+2$ contractions.  Put
 \end{align}
 
 \begin{lemma}[Block contractions]\label{lem:block-contractions}
-For a positive-semidefinite correlation matrix,
+If $A$ is the correlation matrix in~\eqref{eq:corr-six}, then
 \begin{equation}\label{eq:block-bounds}
  R_+\leq\per A,\qquad R_\wedge\leq\per A,\qquad
  1+|a|^2|f|^2+|c|^2|d|^2\leq\per A.
@@ -516,7 +518,7 @@ First note the exact identity
 \end{equation}
 Put $r=(1-|b|^2)^{1/2}$ and
 \[
- y_0=a+\bar d b,\quad y_1=\bar d r,qquad
+ y_0=a+\bar d b,\qquad y_1=\bar d r,\qquad
  g_0=c+fb,\quad g_1=fr.
 \]
 If $Y=|y_0|^2+|y_1|^2$, $G=|g_0|^2+|g_1|^2$, and
@@ -577,31 +579,10 @@ $\bar\chi_\omega$ of $A_4$ are bounded above by $\per A$.
 \end{proposition}
 
 \begin{proof}
-The cyclic, Klein-four, and $S_3$ expansions are as follows.  In the $C_3$
-and $S_3$ cases put $z=ad\bar b$.
-\begin{table}[htbp]
-\caption{Normalized generalized matrix functions for the elementary subgroup cases.}
-\label{tab:elementary-character-expansions}
-\centering
-\small
-\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X@{}}
-\toprule
-group & normalized generalized matrix functions\\
-\midrule
-$1$ & $1$\\
-$C_2^{\rm t}$ & $1\pm|a|^2$\\
-$C_2^{\rm d}$ & $1\pm|a|^2|f|^2$\\
-$C_3$ & $1+2\Rea z$,\quad $1-\Rea z\pm\sqrt3\Ima z$\\
-$V_4^{\rm n}$ & $1\pm r\pm s\pm t$ with the four character sign patterns,\\
-& $r=|a|^2|f|^2$, $s=|b|^2|e|^2$, $t=|c|^2|d|^2$\\
-$V_4^{\rm d}$ & $(1\pm|a|^2)(1\pm|f|^2)$\\
-$S_3$ & $1+|a|^2+|b|^2+|d|^2+2\Rea z$,\\
-& $1-|a|^2-|b|^2-|d|^2+2\Rea z$,\quad $1-\Rea z$\\
-\bottomrule
-\end{tabularx}
-\end{table}
-These expressions follow by listing the elements of the corresponding
-subgroup.  We give the inequalities explicitly.  Set
+First consider the cyclic, Klein-four, and $S_3$ cases.  In the $C_3$ and
+$S_3$ cases put $z=ad\bar b$.  The expressions summarized in
+Table~\ref{tab:elementary-character-expansions} follow by listing the elements
+of the corresponding subgroup.  We give the inequalities explicitly.  Set
 \[
  U=|a|^2+|b|^2+|d|^2,\quad z=x+iy,\quad
  P_3=1+U+2x.
@@ -623,6 +604,28 @@ most one.  For $V_4^{\rm n}$, the all-positive value is
 $1+\mathsf D\leq\per A$ and each other sign pattern is no larger.  For
 $V_4^{\rm d}$, all four values are no larger than
 $(1+|a|^2)(1+|f|^2)\leq\per A$.
+
+\begin{table}[htbp]
+\caption{Normalized generalized matrix functions for the elementary subgroup cases.}
+\label{tab:elementary-character-expansions}
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X@{}}
+\toprule
+group & normalized generalized matrix functions\\
+\midrule
+$1$ & $1$\\
+$C_2^{\rm t}$ & $1\pm|a|^2$\\
+$C_2^{\rm d}$ & $1\pm|a|^2|f|^2$\\
+$C_3$ & $1+2\Rea z$,\quad $1-\Rea z\pm\sqrt3\Ima z$\\
+$V_4^{\rm n}$ & $1\pm r\pm s\pm t$ with the four character sign patterns,\\
+& $r=|a|^2|f|^2$, $s=|b|^2|e|^2$, $t=|c|^2|d|^2$\\
+$V_4^{\rm d}$ & $(1\pm|a|^2)(1\pm|f|^2)$\\
+$S_3$ & $1+|a|^2+|b|^2+|d|^2+2\Rea z$,\\
+& $1-|a|^2-|b|^2-|d|^2+2\Rea z$,\quad $1-\Rea z$\\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 For $C_4$, put
 \[
@@ -841,7 +844,7 @@ entries of $K$ give
 Equations~\eqref{eq:c0-normalized}--\eqref{eq:K-normalized} are obtained
 term by term; for example,
 \[
- \frac{|u|^2}{Q}=(1+n_3)|1+h_{12}|^2,qquad
+ \frac{|u|^2}{Q}=(1+n_3)|1+h_{12}|^2,\qquad
  \frac{uw\bar v}{Q}=(1+h_{12})(1+h_{23})(1+\bar h_{13}).
 \]
 Expanding these two displayed identities and using
@@ -1031,8 +1034,11 @@ For $D_1$, set
 \]
 The identity
 \begin{equation}\label{eq:two-variable-completion}
+\begin{aligned}
  4Q\bigl(Q(r^2+s^2)+L_rr+L_ss+C\bigr)
- =(2Qr+L_r)^2+(2Qs+L_s)^2+4QC-L_r^2-L_s^2
+  &=(2Qr+L_r)^2+(2Qs+L_s)^2\\
+  &\quad+4QC-L_r^2-L_s^2.
+\end{aligned}
 \end{equation}
 reduces positivity to the exact residual
 \[
@@ -1098,7 +1104,7 @@ where
     &\qquad +(20X-24Y)\nu+6\nu^2,\\
  B_4&=60+24X-24Y+14\nu.
 \end{align*}
-Appendix~\ref{app:sos} gives exact certificates for
+The exact certificates in~\ref{app:sos} show that
 $B_1\geq0$, $B_2>0$, $B_4>0$, and
 $B_2+aB_3+a^2B_4>0$.  Hence~\eqref{eq:N1-B} is strictly positive.
 \end{proof}
@@ -1255,15 +1261,18 @@ Its irreducible character table is
 
 For $A_4$, let $C_+$ and $C_-$ be the two conjugacy classes of
 three-cycles.  With $\omega$ as in~\eqref{eq:omega}, the table is
+\begingroup
+\renewcommand{\arraystretch}{1.15}
 \begin{equation}\label{eq:a4-table}
 \begin{array}{c|rrrr}
  &1&(12)(34)&C_+&C_-\\\hline
 1&1&1&1&1\\
 \chi_\omega&1&1&\omega&\omega^2\\
 \bar\chi_\omega&1&1&\omega^2&\omega\\
-\chi_3&3&-1&0&0.
+\chi_3&3&-1&0&0
 \end{array}
 \end{equation}
+\endgroup
 
 For $D_8=\langle r,s:r^4=s^2=1,srs=r^{-1}\rangle$, the four linear
 characters take independent signs on $r$ and $s$, while its two-dimensional

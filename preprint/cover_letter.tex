@@ -1,9 +1,9 @@
-\documentclass[11pt]{letter}
+\documentclass[10pt]{letter}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{amsmath}
 \usepackage{microtype}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=0.85in]{geometry}
 \usepackage[hidelinks]{hyperref}
 
 \signature{Siwei Zeng\\Independent Researcher\\Beijing, China\\
@@ -11,46 +11,47 @@
 ORCID: \href{https://orcid.org/0009-0008-8914-7143}{0009-0008-8914-7143}}
 \address{Siwei Zeng\\Independent Researcher\\Beijing, China\\
 \href{mailto:endlesslethe@gmail.com}{endlesslethe@gmail.com}}
-\date{20 August 2026}
+\date{21 August 2026}
 
 \begin{document}
 
-\begin{letter}{Editors-in-Chief\\
-\textit{Linear Algebra and its Applications}}
+\begin{letter}{Professor Vanni Noferini\\
+Editor-in-Chief\\
+\textit{The Electronic Journal of Linear Algebra}}
 
-\opening{Dear Editors-in-Chief,}
+\opening{Dear Professor Noferini,}
 
-Please consider my manuscript, ``Permanental Dominance for Generalized
-Matrix Functions of Order Four,'' for publication as a regular article in
-\textit{Linear Algebra and its Applications}.
+Please consider my manuscript, ``The General Subgroup
+Permanental-Dominance Conjecture in Order Four,'' for publication in
+\textit{The Electronic Journal of Linear Algebra}.
 
 The manuscript proves the complete order-four case of the general subgroup
-permanental-dominance conjecture.  More precisely, for every subgroup
-$H\leq S_4$, every irreducible complex character $\chi$ of $H$, and every
-$4\times4$ Hermitian positive-semidefinite matrix $A$, it establishes
-\[
-  \frac{d_\chi^H(A)}{\chi(1)}\leq \operatorname{per} A.
-\]
-This goes beyond the usual $S_4$ immanant specialization by treating all
-thirty-seven irreducible-character cases arising from the eleven conjugacy
-classes of subgroups of $S_4$.
+permanental-dominance conjecture: for every subgroup $H\leq S_4$, every
+irreducible complex character $\chi$ of $H$, and every $4\times4$ Hermitian
+positive-semidefinite matrix $A$, it establishes
+$d_\chi^H(A)/\chi(1)\leq \operatorname{per} A$.  This goes beyond the usual
+$S_4$ immanant specialization by treating all thirty-seven
+irreducible-character cases arising from the eleven conjugacy classes of
+subgroups of $S_4$.
 
 The main conceptual contribution is the treatment of the two non-real
 $A_4$ characters.  Their inequalities are reduced to polynomial
-nonnegativity on a cone of $3\times3$ positive-semidefinite Gram matrices and
-are proved using a rank-one sum-of-squares identity, an exact interior
-positive-definiteness certificate, rational Gram certificates, and closure.
-The remaining thirty-five cases are resolved by general principal-minor,
-moment, and block-contraction inequalities.  A companion Lean formalization
-provides machine-checked counterparts of the central identities and the
-complete finite reduction.
+nonnegativity on the cone of $3\times3$ positive-semidefinite Gram matrices.
+A rank-one sum-of-squares identity, an exact interior certificate, and
+closure prove the required positivity.  The remaining thirty-five cases are
+resolved by general matrix inequalities.  A companion Lean formalization
+checks the central identities and the complete finite reduction.
 
-The result and its methods lie directly within the algebraic, combinatorial,
-and geometric aspects of matrix theory covered by the journal.  The
-manuscript is original, has not been published previously, and is not under
-consideration by another journal.  A preprint and the companion formalization
-are publicly available in the cited repository.  No external funding was
-received, and I have no competing interests to declare.
+The general subgroup conjecture was previously known only through matrix
+order three.  The present result closes the next order completely, and the
+Gram-cone reduction supplies a geometric mechanism that may be useful for
+related matrix inequalities.  The result and its methods lie directly within
+the matrix-analysis and linear-algebra scope of the journal.
+
+The manuscript is original, has not been published previously, and is not
+under consideration by another journal.  The cited repository contains the
+preprint and companion formalization.  No external funding was received, and
+I have no competing interests to declare.
 
 Thank you for considering the manuscript.
 

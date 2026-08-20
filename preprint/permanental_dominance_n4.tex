@@ -1,25 +1,37 @@
-\documentclass[preprint,12pt,openbib]{elsarticle}
+\documentclass[10pt,twoside]{siamart1116}
 
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{microtype}
-\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[english]{babel}
+\usepackage{amsfonts,amssymb,mathtools}
 \usepackage{booktabs,longtable,array,tabularx}
 \usepackage{float}
 \usepackage{enumitem}
-\usepackage{xcolor}
-\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
 
-\journal{Linear Algebra and its Applications}
-\biboptions{sort&compress}
+% ELA page dimensions and theorem/equation numbering follow the official
+% ELA sample distributed with siamart1116.
+\setlength{\textheight}{210mm}
+\setlength{\textwidth}{165mm}
+\topmargin=-10mm
+\renewcommand{\baselinestretch}{1.1}
+\setlength{\parskip}{.1in}
 
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{remark}[theorem]{Remark}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewtheorem{theorem}{Theorem}[section]
+
+% Publication data are completed by the ELA editors after acceptance.
+\newcommand{\SP}{1}
+\newcommand{\EP}{1}
+\newcommand{\PMonth}{Month}
+\newcommand{\HE}{Name of Handling Editor}
+\newcommand{\DoS}{Month/Day/Year}
+\newcommand{\DoA}{Month/Day/Year}
+\newcommand{\CA}{Siwei Zeng}
+
+\newcommand{\Names}{S. Zeng}
+\newcommand{\Title}{The General Subgroup Permanental-Dominance Conjecture in Order Four}
+\newcommand{\ShortTitle}{Permanental dominance in order four}
 
 \newcommand{\CC}{\mathbb C}
 \newcommand{\RR}{\mathbb R}
@@ -41,53 +53,71 @@
 \newcommand{\eps}{\varepsilon}
 
 \hypersetup{
-  pdftitle={Permanental Dominance for Generalized Matrix Functions of Order Four},
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!55!black,
+  pdftitle={The General Subgroup Permanental-Dominance Conjecture in Order Four},
   pdfauthor={Siwei Zeng},
-  pdfsubject={Permanental dominance for all subgroup characters of order four}
+  pdfsubject={The complete order-four case of general subgroup permanental dominance},
+  pdfkeywords={permanent, generalized matrix function, immanant,
+    positive-semidefinite matrix, character theory, Gram matrix}
 }
 
 \begin{document}
 
-\begin{frontmatter}
+\bibliographystyle{siamplain}
+\setcounter{page}{1}
+\thispagestyle{empty}
 
-\title{Permanental Dominance for Generalized Matrix Functions of Order Four}
+\title{\Title\thanks{Received by the editors on \DoS.
+Accepted for publication on \DoA.
+Handling Editor: \HE. Corresponding Author: \CA.}}
 
-\author[independent]{Siwei Zeng\corref{cor1}}
-\ead{endlesslethe@gmail.com}
-\ead[url]{https://orcid.org/0009-0008-8914-7143}
-\cortext[cor1]{Corresponding author}
-\affiliation[independent]{
-  organization={Independent Researcher},
-  city={Beijing},
-  country={China}
-}
+\author{Siwei Zeng\thanks{Independent Researcher, Beijing, China
+(\href{mailto:endlesslethe@gmail.com}{endlesslethe@gmail.com}).
+ORCID: \href{https://orcid.org/0009-0008-8914-7143}{0009-0008-8914-7143}.}}
+
+\markboth{\Names}{\ShortTitle}
+\maketitle
 
 \begin{abstract}
-For a subgroup $H\leq \Sn_4$ and an irreducible complex character $\chi$ of
-$H$, let $d_\chi^H$ denote the associated generalized matrix function.  We
-prove that $d_\chi^H(A)/\chi(1)\leq\per A$ for every $4\times4$ Hermitian
-positive-semidefinite matrix $A$.  Thus permanental dominance holds in order
-four for all subgroup characters, not only for the five irreducible
-immanants associated with $\Sn_4$.  After reducing to correlation matrices,
-we classify the thirty-seven irreducible-character cases arising from the
-eleven conjugacy classes of subgroups of $\Sn_4$.  Thirty-five cases follow
-from principal-minor, moment, and block-contraction inequalities.  The two
-remaining conjugate characters of $A_4$ reduce to a polynomial inequality on
-the cone of $3\times3$ positive-semidefinite Gram matrices.  A rank-one
-sum-of-squares identity, an exact positive-definite interior certificate,
-rational Gram certificates, and closure of the Gram cone establish its
-nonnegativity.
+The general subgroup permanental-dominance conjecture was previously known
+only through matrix order three.  This paper proves its complete order-four
+case: for every subgroup $H\leq\Sn_4$, every irreducible complex character
+$\chi$ of $H$, and every $4\times4$ Hermitian positive-semidefinite matrix
+$A$, it establishes $d_\chi^H(A)/\chi(1)\leq\per A$.  Unlike the usual
+immanant specialization, the result covers all thirty-seven
+irreducible-character cases arising from the eleven conjugacy classes of
+subgroups of $\Sn_4$.  Thirty-five cases follow from general principal-minor,
+moment, and block-contraction inequalities.  The two non-real $A_4$
+characters are reduced to polynomial nonnegativity on the cone of
+$3\times3$ positive-semidefinite Gram matrices and are resolved by a
+rank-one sum-of-squares identity, an exact positive-definite interior
+certificate, rational Gram certificates, and closure of the Gram cone.
 \end{abstract}
 
-\begin{keyword}
-permanent \sep generalized matrix function \sep immanant \sep
-positive-semidefinite matrix \sep character theory \sep Gram matrix
-\MSC[2020] 15A15 \sep 15B57 \sep 20C15
-\end{keyword}
+\begin{keywords}
+permanent, generalized matrix function, immanant, positive-semidefinite
+matrix, character theory, Gram matrix
+\end{keywords}
 
-\end{frontmatter}
+\begin{AMS}
+15A15, 15B57, 20C15
+\end{AMS}
 
 \section{Introduction and main theorem}\label{sec:introduction}
+
+The general subgroup permanental-dominance conjecture asks whether every
+normalized generalized matrix function associated with an irreducible
+character of every subgroup of $\Sn_n$ is bounded above by the permanent on
+the Hermitian positive-semidefinite cone.  Before the present work, this
+form of the conjecture was known only through matrix order three
+\cite{tabata2015,wanless2022}.  The main result below establishes the complete
+order-four case.  It is not merely the five-character $\Sn_4$ immanant
+specialization: the eleven conjugacy classes of subgroups of $\Sn_4$ produce
+thirty-seven irreducible-character cases, including two non-real $A_4$
+characters that require a new Gram-cone argument.
 
 The determinant and permanent are the two best-known members of the family
 of generalized matrix functions.  Schur's classical theorem places the
@@ -146,9 +176,7 @@ class function on $\Sn_4$; in particular, odd conjugation interchanges the
 two non-real characters of $A_4$.  The distinction produces a substantially
 larger finite problem: $\Sn_4$ has five irreducible characters, whereas all
 subgroups of $\Sn_4$ contribute thirty-seven irreducible-character cases.
-The general subgroup conjecture was previously known through matrix order
-$n=3$ \cite{tabata2015,wanless2022}; the present theorem establishes the
-complete $n=4$ case.
+The theorem below closes this order-four gap.
 
 For $n\geq1$, $H\leq\Sn_n$, a character $\chi:H\to\CC$, and
 $A=(A_{ij})\in M_n(\CC)$, write
@@ -1456,34 +1484,35 @@ positive-semidefinite cone.  The public theorem is
 \texttt{normalized\_permanental\_dominance\_n4} in the module
 \texttt{PermanentalDominance.N4.}\allowbreak
 \texttt{NormalizedPermanentalDominance}.
-A detailed module map and an axiom audit are included with the source.  For
-the core coefficient extraction, the module
-\path{A4GeometricHessian} contains the theorems
-\path{hessianDeterminant_expansion},
-\path{minimumNumerator_expansion}, and
-\path{collinearNumerator_scaled_identity},
-corresponding respectively
-to~\eqref{eq:detTheta-expansion}, \eqref{eq:N-expansion}, and
-\eqref{eq:N0-certificate}.  The matrix denoted by $\Theta$ here is named
-\texttt{T} in that module.  The rank-one identity and the exact interior
-minimum are theorems \path{geometricP_collinear_identity} and
-\path{minimumPoint_value}, respectively.  They are located in the modules
-\path{A4GeometricRankOne} and \path{A4GeometricMinimum}.  These references
-locate the machine-checked counterparts; the identities and sign
-certificates used by the mathematical proof remain displayed above.
+A detailed module map and an axiom audit are included with the source.  In
+the module \path{A4GeometricHessian}, the machine-checked counterparts of
+the three core coefficient identities are as follows:
+\begin{itemize}
+\item \path{hessianDeterminant_expansion} for
+      \eqref{eq:detTheta-expansion};
+\item \path{minimumNumerator_expansion} for \eqref{eq:N-expansion};
+\item \path{collinearNumerator_scaled_identity} for
+      \eqref{eq:N0-certificate}.
+\end{itemize}
+The matrix denoted by $\Theta$ here is named \texttt{T} in that module.  The
+rank-one identity and the exact interior minimum are theorems
+\path{geometricP_collinear_identity} and \path{minimumPoint_value}, located
+in \path{A4GeometricRankOne} and \path{A4GeometricMinimum}, respectively.
+These references locate the machine-checked counterparts; the identities
+and sign certificates used by the mathematical proof remain displayed
+above.
 
 The formal source used here was extracted from the immutable merge commit
 \href{https://github.com/EndlessLethe/math/commit/c5e4d8c61f08d05ffe7c28bfa1ea732d8827b485}
 {\texttt{c5e4d8c61f08}} and is mirrored in the companion repository.
 
-\section*{Declaration of competing interest}
-The author declares that there are no known competing financial interests or
-personal relationships that could have appeared to influence the work
-reported in this paper.
-
-\section*{Funding}
-This research did not receive any specific grant from funding agencies in the
-public, commercial, or not-for-profit sectors.
+\section*{Acknowledgments}
+During the preparation of this work, the author used OpenAI ChatGPT and Codex
+to assist with mathematical exploration, development of the Lean
+formalization, literature organization, manuscript drafting, language
+editing, and \LaTeX\ preparation.  The author reviewed and edited all
+generated content and takes full responsibility for the accuracy and
+integrity of the work.
 
 \section*{Data and code availability}
 No external data were used in this study.  The accompanying Lean
@@ -1492,16 +1521,12 @@ formalization is available from the
 {companion repository}, together with the manuscript source.  The immutable
 formalization provenance is the commit identified in the preceding section.
 
-\section*{Declaration of generative AI and AI-assisted technologies in the
-manuscript preparation process}
-During the preparation of this work, the author used OpenAI ChatGPT and Codex
-to assist with mathematical exploration, development of the Lean
-formalization, literature organization, manuscript drafting, language
-editing, and LaTeX preparation.  The author reviewed and edited all generated
-content and takes full responsibility for the accuracy and integrity of the
-work.
+\section*{Funding and competing interests}
+This research did not receive any specific grant from funding agencies in the
+public, commercial, or not-for-profit sectors.  The author declares that
+there are no known competing financial interests or personal relationships
+that could have appeared to influence the work reported in this paper.
 
-\bibliographystyle{elsarticle-num}
 \bibliography{references}
 
 \end{document}

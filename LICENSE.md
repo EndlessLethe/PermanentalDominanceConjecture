@@ -46,7 +46,8 @@ files identified below.
 
 ## Third-party files
 
-`preprint/elsarticle.cls` and `preprint/elsarticle-num.bst` are part of the
-Elsevier `elsarticle` bundle and remain subject to the LaTeX Project Public
-License stated in those files. Any other third-party material remains subject
-to its own copyright and license terms.
+`preprint/siamart1116.cls` and `preprint/siamplain.bst` are part of the SIAM
+LaTeX2e macros package distributed through ELA's official template archive
+and remain subject to the LaTeX Project Public License stated in those files.
+Any other third-party material remains subject to its own copyright and
+license terms.

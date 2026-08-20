@@ -1,4 +1,0 @@
-- Permanental dominance is proved for all subgroup characters in degree four.
-- General inequalities settle 35 cases; Gram geometry resolves the final two.
-- The exceptional gap becomes a polynomial on three-by-three Gram matrices.
-- Rank-one SOS and exact interior certificates prove Gram-cone positivity.

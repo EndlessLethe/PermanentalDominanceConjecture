@@ -28,7 +28,6 @@ The proof has three main layers:
 2. reduce the positive-semidefinite matrix problem to correlation data and discharge all routine rows;
 3. handle the remaining non-real $A_4$ rows by a direct residual-vector/Gram-geometric certificate, then assemble the registry into the final theorem.
 
-The active $A_4$ path is geometric. The older characteristic-polynomial/scalar-certificate alternative is intentionally not included.
 
 ## Verification
 
@@ -54,7 +53,3 @@ To rebuild the ELA preprint with its bibliography, run:
 cd preprint
 latexmk -pdf -interaction=nonstopmode -halt-on-error permanental_dominance_n4.tex
 ```
-
-## Provenance
-
-The formal proof was extracted from [`EndlessLethe/math`](https://github.com/EndlessLethe/math) at merge commit [`c5e4d8c61f08d05ffe7c28bfa1ea732d8827b485`](https://github.com/EndlessLethe/math/commit/c5e4d8c61f08d05ffe7c28bfa1ea732d8827b485). Only the dependency closure of the final $n=4$ geometric route is carried here.

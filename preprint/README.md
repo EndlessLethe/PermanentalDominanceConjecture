@@ -4,9 +4,7 @@ This directory contains a self-contained submission build of
 **“The General Subgroup Permanental-Dominance Conjecture in Order Four”**
 for *The Electronic Journal of Linear Algebra* (ELA).
 
-The directory organization follows the useful separation in
-[jinshanmu/CrouzeixConjecture](https://github.com/jinshanmu/CrouzeixConjecture/tree/main/preprint),
-but the journal formatting follows ELA's official sample and its required
+The journal formatting follows ELA's official sample and its required
 SIAM LaTeX2e macros.
 
 ## Files
